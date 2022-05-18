@@ -9,6 +9,6 @@ public class LoginController {
 	@GetMapping("auth")
 	public String AuthUser() {
 		
-		return "Login successfully";
+		return "User logged in successfully";
 	}
 }
