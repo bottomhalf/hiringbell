@@ -1,5 +1,7 @@
 package com.hiringbell.securityConfig;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,7 +21,7 @@ public class BasicSecurityConfiguration {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 		.authorizeHttpRequests(auth -> 
-			auth.antMatchers("/home").permitAll() 
+			auth.antMatchers("/home/**").hasRole("NORMAL")
 			.anyRequest()
 			.authenticated()
 		)
@@ -32,15 +34,25 @@ public class BasicSecurityConfiguration {
 	public InMemoryUserDetailsManager userDetailService() {
 		UserDetails user = User.withDefaultPasswordEncoder()
 				.username("istiyak")
-				.password(this.encodePassword().encode("istiyak"))
+				.password("istiyak")
 				.roles("ADMIN")
 				.build();
 		
-		return new InMemoryUserDetailsManager(user);
+		UserDetails nuser = User.withDefaultPasswordEncoder()
+				.username("rohit")
+				.password("test")
+				.roles("NORMAL")
+				.build();
+		
+		var userList = new ArrayList<UserDetails>();
+		userList.add(nuser);
+		userList.add(user);
+		
+		return new InMemoryUserDetailsManager(userList);
 	}
 	
-	@Bean
-	public PasswordEncoder encodePassword() {
-		return new BCryptPasswordEncoder(10);
-	}
+//	@Bean
+//	public PasswordEncoder encodePassword() {
+//		return new BCryptPasswordEncoder(10);
+//	}
 } 
