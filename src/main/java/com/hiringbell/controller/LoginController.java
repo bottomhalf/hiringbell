@@ -1,5 +1,6 @@
 package com.hiringbell.controller;
 
+import com.hiringbell.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +11,7 @@ import com.hiringbell.model.User;
 import com.hiringbell.service.LoginService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/login")
 public class LoginController {
 
 	@Autowired
@@ -22,9 +23,9 @@ public class LoginController {
 		return user;
 	}
 
-	@GetMapping("")
-	public String AuthUser() {
+	@GetMapping("/auth")
+	public User AuthUser(LoginRepository login) {
 
-		return "User logged in successfully";
+		return null;
 	}
 }

@@ -3,6 +3,8 @@ package com.hiringbell.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hiringbell.repository.LoginRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hiringbell.model.User;
@@ -10,7 +12,12 @@ import com.hiringbell.model.User;
 @Service
 public class LoginService {
 
+	@Autowired
+	LoginRepository loginRepository;
 	private List<User> users;
+
+	@Autowired
+	User user;
 	
 	public LoginService() {
 		// TODO Auto-generated constructor stub
@@ -28,6 +35,13 @@ public class LoginService {
 	
 	public User getUserById(String userId) {
 		var user = this.users.stream().filter(x -> x.getUserId().equals(userId)).findFirst().orElse(null);
+		return user;
+	}
+
+	public User authenticateUser(User user) {
+		this.loginRepository.authenticateUser(user)
+		// login validate user from data base.
+		user = null;
 		return user;
 	}
 }
