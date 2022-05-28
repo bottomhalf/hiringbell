@@ -20,7 +20,7 @@ public class Login extends CreationData {
 
     @Override
     public String toString() {
-        return "Login{" +
+        return "Login {" +
                 "LoginId=" + LoginId +
                 ", UserId=" + UserId +
                 ", UserTypeId=" + UserTypeId +
