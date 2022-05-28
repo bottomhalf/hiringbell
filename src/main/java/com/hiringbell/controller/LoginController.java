@@ -20,6 +20,7 @@ public class LoginController {
 	@GetMapping("/{userId}")
 	public User GetUserById(@PathVariable("userId") String userId) {
 		var user = this.loginService.getUserById(userId);
+		
 		return user;
 	}
 
