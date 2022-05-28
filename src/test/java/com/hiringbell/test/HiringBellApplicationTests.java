@@ -1,4 +1,4 @@
-package com.bot.hiring.bell;
+package com.hiringbell.test;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,5 +1,8 @@
 package com.hiringbell.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class User {
 	String userId;
 	String password;
@@ -8,6 +11,8 @@ public class User {
 	String address;
 	String email;
 	String mobile;
+
+	public User() { }
 
 	public User(String userName, String password) {
 		super();

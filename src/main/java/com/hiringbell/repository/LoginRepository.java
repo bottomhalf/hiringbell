@@ -1,12 +1,9 @@
 package com.hiringbell.repository;
 
 import com.hiringbell.model.User;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.Entity;
-
-@Component
-@Entity(name = "Login")
+@Repository
 public class LoginRepository {
 
     public User authenticateUser(User user) {
