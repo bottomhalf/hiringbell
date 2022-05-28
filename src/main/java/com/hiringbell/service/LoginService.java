@@ -39,7 +39,7 @@ public class LoginService {
 	}
 
 	public User authenticateUser(User user) {
-		this.loginRepository.authenticateUser(user)
+		this.loginRepository.authenticateUser(user);
 		// login validate user from data base.
 		user = null;
 		return user;
