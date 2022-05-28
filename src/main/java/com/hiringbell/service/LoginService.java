@@ -34,8 +34,8 @@ public class LoginService {
 	}
 	
 	public User getUserById(String userId) {
-		var user = this.users.stream().filter(x -> x.getUserId().equals(userId)).findFirst().orElse(null);
-		return user;
+		var users = this.loginRepository.getRepoUserById(user);
+		return users;
 	}
 
 	public User authenticateUser(User user) {

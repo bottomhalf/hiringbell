@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "login")
 public class Login extends CreationData {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "LoginId")
