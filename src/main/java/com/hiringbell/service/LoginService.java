@@ -34,7 +34,7 @@ public class LoginService {
 	}
 	
 	public User getUserById(String userId) {
-		var users = this.loginRepository.getRepoUserById(user);
+		var users = this.loginRepository.getRepoUse rById(user);
 		return users;
 	}
 
