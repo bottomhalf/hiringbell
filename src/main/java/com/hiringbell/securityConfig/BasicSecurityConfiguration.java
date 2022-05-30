@@ -23,9 +23,9 @@ public class BasicSecurityConfiguration {
 		.authorizeHttpRequests(auth -> 
 			auth.antMatchers("/home/**").hasRole("NORMAL")
 			.anyRequest()
-			.authenticated()
+					.authenticated()
 		)
-		.httpBasic();
+				.httpBasic();
 		
 		return http.build();
 	}
