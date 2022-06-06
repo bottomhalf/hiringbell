@@ -8,7 +8,7 @@
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/hiringbell</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">Istiyak@mi9</property>
+        <property name="connection.password">21september</property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
         <!-- Select our SQL dialect -->
@@ -28,5 +28,6 @@
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         <mapping class="com.hiringbell.entity.Login" />
+        <mapping class="com.hiringbell.entity.User" />
     </session-factory>
 </hibernate-configuration>
