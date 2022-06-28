@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.hiringbell.entity.Login;
-import com.hiringbell.model.User;
+import com.hiringbell.entity.User;
 
 @Repository
 public class LoginRepository {
