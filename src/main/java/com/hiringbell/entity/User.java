@@ -1,57 +1,83 @@
-package com.hiringbell.model;
+package com.hiringbell.entity;
+
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
-
 
 @Entity
 @Component
 @Table(name = "user")
-public class User extends CreationData {
+public class User {
+
+	@Id
 	@Column(name = "UserId")
 	Long userId;
-	
-	
+
+	@Transient
 	String password;
-	
+
 	@Column(name = "FirstName")
 	String firstName;
-	
+
 	@Column(name = "LastName")
 	String lastName;
-	
+
 	@Column(name = "Address")
 	String address;
-	
+
 	@Column(name = "Email")
 	String email;
-	
+
 	@Column(name = "Mobile")
 	String mobile;
 
-	public User() {
-	}
+	@Column(name = "CompanyName")
+	String companyName;
+	
+	@Transient
+	Long AdminId;
+	
+	@Column(name = "CreatedBy")
+	Long createdBy;
+
+	@Column(name = "UpdatedBy")
+	Long updatedBy;
+
+	@Column(name = "CreatedOn")
+	Date createdOn;
+
+	@Column(name = "UpdatedOn")
+	Date updatedOn;
+	
+	
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", address=" + address + ", email=" + email + ", mobile=" + mobile + "]";
+				+ lastName + ", address=" + address + ", email=" + email + ", mobile=" + mobile + ", createdBy="
+				+ createdBy + ", updatedBy=" + updatedBy + ", createdOn=" + createdOn + ", updatedOn=" + updatedOn
+				+ "]";
 	}
 
-	public User(long userId, String password) {
-		super();
-		this.userId = userId;
-		this.password = password;
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public long getUserId() {
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -102,5 +128,36 @@ public class User extends CreationData {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	
+
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Long getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Long updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public Date getUpdatedOn() {
+		return updatedOn;
+	}
+
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
+	}
 }
