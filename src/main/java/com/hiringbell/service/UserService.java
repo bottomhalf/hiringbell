@@ -35,7 +35,6 @@ public class UserService {
 		var result = this.userRepository.getUserByIdWithProcedureRepository(userId);
 		
 		return result;
-		
 	}
 	
 	

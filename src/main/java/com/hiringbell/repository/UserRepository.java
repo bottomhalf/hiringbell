@@ -8,6 +8,7 @@ import javax.persistence.StoredProcedureQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.procedure.ProcedureCall;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -186,33 +187,33 @@ public class UserRepository {
 	
 	public String addUserRepository(User user)
 	{	
-		int result = 0;
+		int rowsCount = 0;
 		Transaction tx = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		System.out.println(factory);
 		
 		try(Session session = factory.openSession()) {
 			tx = session.beginTransaction();
-			
-		
-			
-			Query <User> query = session.createNamedQuery("INSERT INTO User(userId, password, firstName, lastName, address, email, mobile, companyName, createdBy, updatedBy, createdOn, updatedOn)", User.class);
-			query.setParameter("userId", user.getUserId());
-			query.setParameter("password", user.getPassword());
-			query.setParameter("firstName", user.getFirstName());
-			query.setParameter("lastName", user.getLastName());
-			query.setParameter("address", user.getAddress());
-			query.setParameter("email", user.getEmail());
-			query.setParameter("mobile", user.getMobile());
-			query.setParameter("companyName", user.getCompanyName());
-			query.setParameter("createdBy", user.getCreatedBy());
-			query.setParameter("updatedBy", user.getUpdatedBy());
-			query.setParameter("createdOn", user.getCreatedOn());
-			query.setParameter("updatedOn", user.getUpdatedOn());
-			
-			
-			result = query.executeUpdate();
-			System.out.println("Rows affected for Insert:" + result);
+
+			ProcedureCall query = session.createStoredProcedureCall("sp_User_InsertUpdate");
+			query.registerParameter("_UserId", Long.class, ParameterMode.IN).bindValue(user.getUserId());
+			query.registerParameter("_FirstName", String.class, ParameterMode.IN).bindValue(user.getFirstName());
+			query.registerParameter("_LastName", String.class, ParameterMode.IN).bindValue(user.getLastName());
+
+			query.registerParameter("_Address", String.class, ParameterMode.IN).enablePassingNulls(true);
+			query.setParameter("_Address", user.getAddress());
+
+			query.registerParameter("_Email", String.class, ParameterMode.IN).bindValue(user.getEmail());
+			query.registerParameter("_Mobile", String.class, ParameterMode.IN).bindValue(user.getMobile());
+			query.registerParameter("_CompanyName", String.class, ParameterMode.IN).bindValue(user.getCompanyName());
+			query.registerParameter("_AdminId", Long.class, ParameterMode.IN).bindValue(user.getCreatedBy());
+			query.registerParameter("_ProcessingResult", String.class, ParameterMode.OUT);
+
+			String result = query.getOutputParameterValue("_ProcessingResult").toString();
+			rowsCount = query.executeUpdate();
+
+
+			System.out.println("Status: " + result);
 			
 			tx.commit();
 			session.close();
