@@ -200,8 +200,10 @@ public class UserRepository {
 			query.registerParameter("_FirstName", String.class, ParameterMode.IN).bindValue(user.getFirstName());
 			query.registerParameter("_LastName", String.class, ParameterMode.IN).bindValue(user.getLastName());
 
-			query.registerParameter("_Address", String.class, ParameterMode.IN).enablePassingNulls(true);
-			query.setParameter("_Address", user.getAddress());
+			/*query.registerParameter("_Address", String.class, ParameterMode.IN).enablePassingNulls(true);
+			query.setParameter("_Address", user.getAddress());*/
+
+			query.registerParameter("_Address", String.class, ParameterMode.IN).bindValue(user.getAddress());
 
 			query.registerParameter("_Email", String.class, ParameterMode.IN).bindValue(user.getEmail());
 			query.registerParameter("_Mobile", String.class, ParameterMode.IN).bindValue(user.getMobile());
