@@ -53,7 +53,7 @@ public class UserController extends BaseController {
 		return BuildOk(result) ;
 	}
 	
-	@PostMapping("/user")
+	@PostMapping("/addOrUpdateUser")
 	public ResponseModal addUser(@RequestBody User user)
 	{
 		var result = this.userService.addUserService(user);
