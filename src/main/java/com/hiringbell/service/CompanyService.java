@@ -1,5 +1,7 @@
 package com.hiringbell.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -19,17 +21,30 @@ public class CompanyService {
 		return result;
 	}
 	
-	public String updateCompanyByIdService(Company company, long companyId) {
-		var result = this.companyRepository.updateCompanyByIdRepo(company, companyId);
+	public String updateCompanyByIdService(Company company, long companyId) throws Exception {
+		var result = "";
+		Company value = this.companyRepository.getCompanyByIdRepo(companyId);
+		if(value != null) {
+			value.setRole(company.getRole());
+			value.setIndustry(company.getIndustry());
+			
+			
+			value.setAdminId(company.getAdminId());
+			
+			result = this.companyRepository.updateCompanyByIdRepo(value, companyId);
+		}
+		else {
+			throw new Exception("Exception message");
+		}
 		return result;
 	}
 	
-	public String getAllCompanyService() {
+	public ArrayList<Company> getAllCompanyService() {
 		var result = this.companyRepository.getAllCompanyRepo();
 		return result;
 	}
 	
-	public String getCompanyByIdService(long companyId) {
+	public Company getCompanyByIdService(long companyId) {
 		var result = this.companyRepository.getCompanyByIdRepo(companyId);
 		return result;
 	}

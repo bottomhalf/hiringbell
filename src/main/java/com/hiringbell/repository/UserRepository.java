@@ -109,9 +109,7 @@ public class UserRepository {
 				tx.rollback();
 			}
 		}
-		
 		return (ArrayList<User>) allUser;
-		
 	}
 	
 	
@@ -121,15 +119,12 @@ public class UserRepository {
 		Transaction tx = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		System.out.println(factory);
-		
 		try(Session session = factory.openSession()) {
 			tx = session.beginTransaction();
-			
+	
 			Query<User> query = session.createSQLQuery("Call sp_User_GetById(:userId)").addEntity(User.class);
 			query.setParameter("userId", userId);
 			userDetail = query.getSingleResult();
-			
-			
 			tx.commit();
 			session.close();
 			
@@ -213,13 +208,9 @@ public class UserRepository {
 
 			String result = query.getOutputParameterValue("_ProcessingResult").toString();
 			rowsCount = query.executeUpdate();
-
-
 			System.out.println("Status: " + result);
-			
 			tx.commit();
 			session.close();
-			
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());

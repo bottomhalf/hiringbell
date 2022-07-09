@@ -14,13 +14,13 @@ public class EmploymentDetailService {
 	@Autowired
 	EmploymentDetailRepository employmentDetailRepository;
 	
-	public String addEmploymentDetailService(EmploymentDetail empDetail) {
-		var result = this.employmentDetailRepository.addEmploymentDetailRepo(empDetail);
+	public String addEmploymentDetailService(EmploymentDetail employmentDetail) {
+		var result = this.employmentDetailRepository.addEmploymentDetailRepo(employmentDetail);
 		return result;
 	}
 	
-	public String updateEmploymentDetailService(EmploymentDetail empDetail, long empDetailId) {
-		var result = this.employmentDetailRepository.updateEmploymentDetailRepo(empDetail, empDetailId);
+	public String updateEmploymentDetailService(EmploymentDetail employmentDetail, long employmentDetailId) {
+		var result = this.employmentDetailRepository.updateEmploymentDetailRepo(employmentDetail, employmentDetailId);
 		return result;
 	}
 
@@ -29,13 +29,13 @@ public class EmploymentDetailService {
 		return result;
 	}
 	
-	public String getByIdEmploymentDetailService(long empDetailId) {
-		var result = this.employmentDetailRepository.getByIdEmploymentDetailRepo(empDetailId);
+	public String getByIdEmploymentDetailService(long employmentDetailId) {
+		var result = this.employmentDetailRepository.getByIdEmploymentDetailRepo(employmentDetailId);
 		return result;
 	}
 
-	public String deleteByIdEmploymentDetailService(long empDetailId) {
-		var result = this.employmentDetailRepository.deleteByIdEmploymentDetailRepo(empDetailId);
+	public String deleteByIdEmploymentDetailService(long employmentDetailId) {
+		var result = this.employmentDetailRepository.deleteByIdEmploymentDetailRepo(employmentDetailId);
 		return result;
 	}
 }

@@ -20,8 +20,8 @@ public class EducationalDetailService {
 		return result;
 	}
 	
-	public String updateEducationalDetailService(EducationalDetail ed, long edId) {
-		var result = this.educationalDetailRepository.updateEducationalDetailRepo(ed, edId);
+	public String updateEducationalDetailService(EducationalDetail ed, long educationalDetailId) {
+		var result = this.educationalDetailRepository.updateEducationalDetailRepo(ed, educationalDetailId);
 		return result;
 	}
 
@@ -30,17 +30,15 @@ public class EducationalDetailService {
 		return result;
 	}
 	
-	public String getByIdEducationalDetailService(long edId) {
-		var result = this.educationalDetailRepository.getByIdEducationalDetailRepo(edId);
+	public String getByIdEducationalDetailService(long educationalDetailId) {
+		var result = this.educationalDetailRepository.getByIdEducationalDetailRepo(educationalDetailId);
 		return result;
 	}
 
-	public String deleteByIdEducationalDetailService(long edId) {
-		var result = this.educationalDetailRepository.deleteByIdEducationalDetailRepo(edId);
+	public String deleteByIdEducationalDetailService(long educationalDetailId) {
+		var result = this.educationalDetailRepository.deleteByIdEducationalDetailRepo(educationalDetailId);
 		return result;
 		
-		
 	}
-	
 	
 }

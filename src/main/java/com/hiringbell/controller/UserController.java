@@ -36,8 +36,8 @@ public class UserController extends BaseController {
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/{userId}")
-	public ResponseModal getUserByIdWithProcedure(@PathVariable("userId") long userId) throws Exception
+	@GetMapping("/getUserByIdWithProcedure/{userId}")
+	public ResponseModal getUserByIdWithProcedure(@PathVariable("userId") long userId)
 	{
 		var result = this.userService.getUserByIdWithProcedureService(userId);
 		

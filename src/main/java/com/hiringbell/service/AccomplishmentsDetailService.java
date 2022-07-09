@@ -1,5 +1,7 @@
 package com.hiringbell.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -24,12 +26,12 @@ public class AccomplishmentsDetailService {
 		return result;
 	}
 	
-	public String getAllAccomplishmentsDetailService() {
+	public ArrayList<AccomplishmentsDetail> getAllAccomplishmentsDetailService() {
 		var result = this.accomplishmentsDetailRepo.getAllAccomplishmentsDetailRepo();
 		return result;
 	}
 
-	public String getByIdAccomplishmentsDetailService(long accomplishmentId) {
+	public AccomplishmentsDetail getByIdAccomplishmentsDetailService(long accomplishmentId) {
 		var result = this.accomplishmentsDetailRepo.getByIdAccomplishmentsDetailRepo(accomplishmentId);
 		return result;
 		

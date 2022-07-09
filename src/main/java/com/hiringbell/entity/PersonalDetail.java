@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Component;
 public class PersonalDetail {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PersonalDetailId")
 	long personalDetailId;
 	
@@ -179,6 +182,22 @@ public class PersonalDetail {
 
 	public void setAdminId(Long adminId) {
 		AdminId = adminId;
+	}
+
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Long getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Long updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	public PersonalDetail(long personalDetailId, Date dob, String gender, String address, String homeTown, int pinCode,

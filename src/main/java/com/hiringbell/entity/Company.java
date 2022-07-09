@@ -1,11 +1,11 @@
 package com.hiringbell.entity;
 
-
-
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 public class Company {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CompanyId")
 	long companyId;
 	
@@ -30,10 +31,10 @@ public class Company {
 	@Column(name = "Designation")
 	String designation;
 	
-	@Column(name = "Company_Name")
+	@Column(name = "CompanyName")
 	String companyName;
 	
-	@Column(name = "Functional_Area")
+	@Column(name = "FunctionalArea")
 	String functionalArea;
 	
 	@Column(name = "DesiredTypePermanent")
@@ -42,22 +43,22 @@ public class Company {
 	@Column(name = "DesiredEmploymentType")
 	String desiredEmploymentType;
 	
-	@Column(name = "PreferredShift")
+	@Column(name = "preferredShift")
 	String preferredShift;
 	
-	@Column(name = "PreferredWorkLocation")
+	@Column(name = "preferredWorkLocation")
 	String preferredWorkLocation;
 	
 	@Column(name = "ExpectedSalary")
 	double expectedSalary;
 	
-	@Column(name = "RoleCategory")
+	@Column(name = "roleCategory")
 	String roleCategory;
 	
-	@Column(name = "Department")
+	@Column(name = "department")
 	String department;
 	
-	@Column(name = "CurrencyType")
+	@Column(name = "currencyType")
 	String currencyType;
 	
 	@Transient
@@ -203,6 +204,22 @@ public class Company {
 
 	public void setAdminId(Long adminId) {
 		AdminId = adminId;
+	}
+	
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Long getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Long updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	public Company(long companyId, String role, String industry, String designation, String companyName,

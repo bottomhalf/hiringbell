@@ -22,20 +22,20 @@ public class AccomplishmentsDetailController extends BaseController {
 	AccomplishmentsDetailService accomplishmentsDetailService;
 	
 	
-	@PostMapping("/addAD")
+	@PostMapping("/addAccomplishmentsDetail")
 	public ResponseModal addAccomplishmentsDetail(@RequestBody AccomplishmentsDetail ad) {
 		var result = this.accomplishmentsDetailService.addAccomplishmentsDetailService(ad);
 		return BuildOk(result);
 	}
 	
 	
-	@PutMapping("/updatePD/{accomplishmentId}")
+	@PutMapping("/updateAccomplishmentsDetail/{accomplishmentId}")
 	public ResponseModal updateAccomplishmentsDetail(@RequestBody AccomplishmentsDetail ad, @PathVariable ("accomplishmentId") long accomplishmentId ) {
 		var result = this.accomplishmentsDetailService.updateAccomplishmentsDetailService(ad, accomplishmentId);
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/allAD")
+	@GetMapping("/allAccomplishmentsDetail")
 	public ResponseModal getAllAccomplishmentsDetail() {
 		var result = this.accomplishmentsDetailService.getAllAccomplishmentsDetailService();
 		return BuildOk(result);

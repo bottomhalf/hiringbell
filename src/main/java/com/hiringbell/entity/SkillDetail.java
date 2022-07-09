@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -17,7 +19,8 @@ public class SkillDetail {
 	
 	
 	@Id
-	@Column(name = "SkillDetail_Id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "SkillDetailId")
 	long skillDetailId;
 	
 	@Column(name = "SkillIndex")
@@ -122,6 +125,22 @@ public class SkillDetail {
 
 	public void setAdminId(Long adminId) {
 		AdminId = adminId;
+	}
+
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Long getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Long updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	public SkillDetail(long skillDetailId, int skillIndex, String language, int version, Date lastUsed,

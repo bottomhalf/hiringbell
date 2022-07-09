@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -17,8 +19,9 @@ public class EmploymentDetail {
 	
 	
 	@Id
-	@Column(name = "EmpDetail_Id")
-	long empDetailId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "EmploymentDetailId")
+	long employmentDetailId;
 	
 	@Column(name = "Organization")
 	String organization;
@@ -64,18 +67,18 @@ public class EmploymentDetail {
 
 	@Override
 	public String toString() {
-		return "EmploymentDetail [empDetailId=" + empDetailId + ", organization=" + organization + ", designation="
+		return "EmploymentDetail [empDetailId=" + employmentDetailId + ", organization=" + organization + ", designation="
 				+ designation + ", employmentStatus=" + employmentStatus + ", years=" + years + ", months=" + months
 				+ ", currentSalary=" + currentSalary + ", currencyType=" + currencyType + ", experties=" + experties
 				+ ", jobProfile=" + jobProfile + ", AdminId=" + AdminId + "]";
 	}
 
 	public long getEmpDetailId() {
-		return empDetailId;
+		return employmentDetailId;
 	}
 
 	public void setEmpDetailId(long empDetailId) {
-		this.empDetailId = empDetailId;
+		this.employmentDetailId = empDetailId;
 	}
 
 	public String getOrganization() {
@@ -162,7 +165,7 @@ public class EmploymentDetail {
 			int years, int months, double currentSalary, String currencyType, String experties, String jobProfile,
 			Long adminId) {
 		super();
-		this.empDetailId = empDetailId;
+		this.employmentDetailId = empDetailId;
 		this.organization = organization;
 		this.designation = designation;
 		this.employmentStatus = employmentStatus;

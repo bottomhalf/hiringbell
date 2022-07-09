@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -17,25 +19,26 @@ import org.springframework.stereotype.Component;
 public class EducationalDetail {
 	
 	@Id
-	@Column(name = "EducationalDetail_Id")
-	long edId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "EducationalDetailId")
+	long educationalDetailId;
 	
-	@Column(name = "Degree_Name")
+	@Column(name = "DegreeName")
 	String degreeName;
 	
-	@Column(name = "Passout_Year")
+	@Column(name = "PassoutYear")
 	Date passoutYear;
 	
 	@Column(name = "Specialization")
 	String specialization;
 	
-	@Column(name = "University_Name")
+	@Column(name = "UniversityName")
 	String universityName;
 	
-	@Column(name = "Course_Type")
+	@Column(name = "CourseType")
 	String courseType;
 	
-	@Column(name = "Grading_System")
+	@Column(name = "GradingSystem")
 	String gradingSystem;
 	
 	@Column(name = "Course")
@@ -58,17 +61,18 @@ public class EducationalDetail {
 
 	@Override
 	public String toString() {
-		return "EducationalDetail [edId=" + edId + ", degreeName=" + degreeName + ", passoutYear=" + passoutYear
-				+ ", specialization=" + specialization + ", universityName=" + universityName + ", courseType="
-				+ courseType + ", gradingSystem=" + gradingSystem + ", course=" + course + ", AdminId=" + AdminId + "]";
+		return "EducationalDetail [educationalDetailId=" + educationalDetailId + ", degreeName=" + degreeName
+				+ ", passoutYear=" + passoutYear + ", specialization=" + specialization + ", universityName="
+				+ universityName + ", courseType=" + courseType + ", gradingSystem=" + gradingSystem + ", course="
+				+ course + ", AdminId=" + AdminId + "]";
 	}
 
-	public long getEdId() {
-		return edId;
+	public long getEducationalDetailId() {
+		return educationalDetailId;
 	}
 
-	public void setEdId(long edId) {
-		this.edId = edId;
+	public void setEducationalDetailId(long educationalDetailId) {
+		this.educationalDetailId = educationalDetailId;
 	}
 
 	public String getDegreeName() {
@@ -135,10 +139,10 @@ public class EducationalDetail {
 		AdminId = adminId;
 	}
 
-	public EducationalDetail(long edId, String degreeName, Date passoutYear, String specialization,
+	public EducationalDetail(long educationalDetailId, String degreeName, Date passoutYear, String specialization,
 			String universityName, String courseType, String gradingSystem, String course, Long adminId) {
 		super();
-		this.edId = edId;
+		this.educationalDetailId = educationalDetailId;
 		this.degreeName = degreeName;
 		this.passoutYear = passoutYear;
 		this.specialization = specialization;

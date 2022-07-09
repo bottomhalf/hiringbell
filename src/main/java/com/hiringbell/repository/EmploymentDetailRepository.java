@@ -8,11 +8,11 @@ import com.hiringbell.entity.EmploymentDetail;
 public class EmploymentDetailRepository {
 	
 	
-	public String addEmploymentDetailRepo(EmploymentDetail empDetail) {
+	public String addEmploymentDetailRepo(EmploymentDetail employmentDetail) {
 		return "Data added in EmploymentDetail successfully";
 	}
 	
-	public String updateEmploymentDetailRepo(EmploymentDetail empDetail, long empDetailId) {
+	public String updateEmploymentDetailRepo(EmploymentDetail employmentDetail, long employmentDetailId) {
 		return "Data updated successfully in EmploymentDetail";
 	}
 
@@ -20,11 +20,11 @@ public class EmploymentDetailRepository {
 		return "Got all data of EmploymentDetail successfully";
 	}
 	
-	public String getByIdEmploymentDetailRepo(long empDetailId) {
+	public String getByIdEmploymentDetailRepo(long employmentDetailId) {
 		return "Got data of EmploymentDetail by empDetailId";
 	}
 
-	public String deleteByIdEmploymentDetailRepo(long empDetailId) {
+	public String deleteByIdEmploymentDetailRepo(long employmentDetailId) {
 	return "Data deleted from EmploymentDetail by empDetailId";
 		
 	}

@@ -22,14 +22,14 @@ public class EmploymentDetailController extends BaseController {
 	EmploymentDetailService employmentDetailService;
 	
 	@PostMapping("/addEmpDetail")
-	public ResponseModal addEmploymentDetail(@RequestBody EmploymentDetail empDetail) {
-		var result = this.employmentDetailService.addEmploymentDetailService(empDetail);
+	public ResponseModal addEmploymentDetail(@RequestBody EmploymentDetail employmentDetail) {
+		var result = this.employmentDetailService.addEmploymentDetailService(employmentDetail);
 		return BuildOk(result);
 	}
 	
-	@PutMapping("/updateEmpDetail/{empDetailId}")
-	public ResponseModal updateEmploymentDetail(@RequestBody EmploymentDetail empDetail, @PathVariable("empDetailId") long empDetailId) {
-		var result = this.employmentDetailService.updateEmploymentDetailService(empDetail, empDetailId);
+	@PutMapping("/updateEmpDetail/{employmentDetailId}")
+	public ResponseModal updateEmploymentDetail(@RequestBody EmploymentDetail employmentDetail, @PathVariable("employmentDetailId") long employmentDetailId) {
+		var result = this.employmentDetailService.updateEmploymentDetailService(employmentDetail, employmentDetailId);
 		return BuildOk(result);
 	}
 	
@@ -39,15 +39,15 @@ public class EmploymentDetailController extends BaseController {
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/getByempDetailId/{empDetailId}")
-	public ResponseModal getByIdEmploymentDetail(@PathVariable ("empDetailId") long empDetailId) {
-		var result = this.employmentDetailService.getByIdEmploymentDetailService(empDetailId);
+	@GetMapping("/getByempDetailId/{employmentDetailId}")
+	public ResponseModal getByIdEmploymentDetail(@PathVariable ("employmentDetailId") long employmentDetailId) {
+		var result = this.employmentDetailService.getByIdEmploymentDetailService(employmentDetailId);
 		return BuildOk(result);
 	}
 	
-	@DeleteMapping("/deleteByempDetailId/{empDetailId}")
-	public ResponseModal deleteByIdEmploymentDetail (@PathVariable ("empDetailId") long empDetailId) {
-		var result = this.employmentDetailService.deleteByIdEmploymentDetailService(empDetailId);
+	@DeleteMapping("/deleteByempDetailId/{employmentDetailId}")
+	public ResponseModal deleteByIdEmploymentDetail (@PathVariable ("employmentDetailId") long employmentDetailId) {
+		var result = this.employmentDetailService.deleteByIdEmploymentDetailService(employmentDetailId);
 		return BuildOk(result);
 	}
 

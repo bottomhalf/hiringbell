@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -16,10 +18,11 @@ import org.springframework.stereotype.Component;
 public class ProfessionalDetail {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "UserId")
 	Long userId;
 	
-	@Column(name = "Mobile_Number")
+	@Column(name = "MobileNumber")
 	String mobileNumber;
 	
 	@Column(name = "Email")
@@ -31,36 +34,42 @@ public class ProfessionalDetail {
 	@Column(name = "LastName")
 	String lastName;
 	
-	@Column(name = "Date_Of_Application")
+	@Column(name = "DateOfApplication")
 	Date dateOfApplication;
 	
-	@Column(name = "Total_Experience_In_Months")
+	@Column(name = "TotalExperienceInMonths")
 	int totalEperienceinMonths;
 	
-	@Column(name = "Salary_Package")
+	@Column(name = "SalaryPackage")
 	double salaryPackage;
 	
-	@Column(name = "Notice_Period")
+	@Column(name = "NoticePeriod")
 	int noticePeriod;
 	
-	@Column(name = "Expeceted_CTC")
+	@Column(name = "ExpecetedCTC")
 	double expecetedCtc;
 	
-	@Column(name = "Current_Location")
+	@Column(name = "CurrentLocation")
 	String currentLocation;
 	
-	@Column(name = "Preferred_Locations")
+	@Column(name = "PreferredLocations")
 	String preferredLocations;
 	
-	@Column(name = "ProfessionalDetail_Json")
+	@Column(name = "ProfessionalDetailJson")
 	String professionalDetailJson;
 	
 	@Transient
 	Long AdminId;
 	
+	@Column(name = "CreatedBy")
+	Long createdBy;
+
+	@Column(name = "UpdatedBy")
+	Long updatedBy;
+
 	@Column(name = "CreatedOn")
 	Date createdOn;
-	
+
 	@Column(name = "UpdatedOn")
 	Date updatedOn;
 

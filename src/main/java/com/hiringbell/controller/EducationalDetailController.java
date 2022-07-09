@@ -28,8 +28,8 @@ public class EducationalDetailController extends BaseController {
 	}
 	
 	@PutMapping("/updateEducationalDetail/{edId}")
-	public ResponseModal updateEducationalDetail(@RequestBody EducationalDetail ed, @PathVariable long edId) {
-		var result = this.educationalDetailService.updateEducationalDetailService(ed, edId);
+	public ResponseModal updateEducationalDetail(@RequestBody EducationalDetail ed, @PathVariable long educationalDetailId) {
+		var result = this.educationalDetailService.updateEducationalDetailService(ed, educationalDetailId);
 		return BuildOk(result);
 	}
 	
@@ -41,14 +41,14 @@ public class EducationalDetailController extends BaseController {
 	}
 	
 	@GetMapping("/getById/{edId}")
-	public ResponseModal getByIdEducationalDetail(@PathVariable ("edId") long edId) {
-		var result = this.educationalDetailService.getByIdEducationalDetailService(edId);
+	public ResponseModal getByIdEducationalDetail(@PathVariable ("edId") long educationalDetailId) {
+		var result = this.educationalDetailService.getByIdEducationalDetailService(educationalDetailId);
 		return BuildOk(result);
 	}
 	
 	@DeleteMapping("/deleteById/{edId}")
-	public ResponseModal deleteByIdEducationalDetail(@PathVariable("edId") long edId) {
-		var result = this.educationalDetailService.deleteByIdEducationalDetailService(edId);
+	public ResponseModal deleteByIdEducationalDetail(@PathVariable("edId") long educationalDetailId) {
+		var result = this.educationalDetailService.deleteByIdEducationalDetailService(educationalDetailId);
 		return BuildOk(result);
 	}
 

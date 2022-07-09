@@ -28,7 +28,7 @@ public class CompanyController extends BaseController {
 	}
 	
 	@PutMapping("/updateCompany/{companyId}")
-	public ResponseModal updateCompanyById(@RequestBody Company company, @PathVariable("companyId") long companyId) {
+	public ResponseModal updateCompanyById(@RequestBody Company company, @PathVariable("companyId") long companyId) throws Exception {
 		var result = this.companyService.updateCompanyByIdService(company, companyId);
 		return BuildOk(result);
 	}
@@ -40,13 +40,13 @@ public class CompanyController extends BaseController {
 	}
 	
 	@GetMapping("/getByCompanyId/{companyId}")
-	public ResponseModal getCompanyById(@PathVariable ("companyId") long companyId ) {
+	public ResponseModal getCompanyById(@PathVariable("companyId") long companyId ) {
 		var result = this.companyService.getCompanyByIdService(companyId);
 		return BuildOk(result);
 	}
 	
 	@DeleteMapping("/deleteByCompanyId/{companyId}")
-	public ResponseModal deleteByIdCompany( @PathVariable ("companyId") long companyId) {
+	public ResponseModal deleteByIdCompany( @PathVariable("companyId") long companyId) {
 		var result = this.companyService.deleteByIdCompanyService(companyId);
 		return BuildOk(result);
 	}
