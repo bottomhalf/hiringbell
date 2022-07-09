@@ -43,22 +43,22 @@ public class Company {
 	@Column(name = "DesiredEmploymentType")
 	String desiredEmploymentType;
 	
-	@Column(name = "preferredShift")
+	@Column(name = "PreferredShift")
 	String preferredShift;
 	
-	@Column(name = "preferredWorkLocation")
+	@Column(name = "PreferredWorkLocation")
 	String preferredWorkLocation;
 	
 	@Column(name = "ExpectedSalary")
 	double expectedSalary;
 	
-	@Column(name = "roleCategory")
+	@Column(name = "RoleCategory")
 	String roleCategory;
 	
-	@Column(name = "department")
+	@Column(name = "Department")
 	String department;
 	
-	@Column(name = "currencyType")
+	@Column(name = "CurrencyType")
 	String currencyType;
 	
 	@Transient

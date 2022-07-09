@@ -23,15 +23,15 @@ public class AccomplishmentsDetailController extends BaseController {
 	
 	
 	@PostMapping("/addAccomplishmentsDetail")
-	public ResponseModal addAccomplishmentsDetail(@RequestBody AccomplishmentsDetail ad) {
-		var result = this.accomplishmentsDetailService.addAccomplishmentsDetailService(ad);
+	public ResponseModal addAccomplishmentsDetail(@RequestBody AccomplishmentsDetail accomplishmentsDetail) {
+		var result = this.accomplishmentsDetailService.addAccomplishmentsDetailService(accomplishmentsDetail);
 		return BuildOk(result);
 	}
 	
 	
 	@PutMapping("/updateAccomplishmentsDetail/{accomplishmentId}")
-	public ResponseModal updateAccomplishmentsDetail(@RequestBody AccomplishmentsDetail ad, @PathVariable ("accomplishmentId") long accomplishmentId ) {
-		var result = this.accomplishmentsDetailService.updateAccomplishmentsDetailService(ad, accomplishmentId);
+	public ResponseModal updateAccomplishmentsDetail(@RequestBody AccomplishmentsDetail accomplishmentsDetail, @PathVariable ("accomplishmentId") long accomplishmentId ) throws Exception {
+		var result = this.accomplishmentsDetailService.updateAccomplishmentsDetailService(accomplishmentsDetail, accomplishmentId);
 		return BuildOk(result);
 	}
 	

@@ -33,12 +33,12 @@ public class CompanyRepository {
 			query.registerParameter("_FunctionalArea", String.class, ParameterMode.IN).bindValue(company.getFunctionalArea());
 			query.registerParameter("_DesiredTypePermanent", String.class, ParameterMode.IN).bindValue(company.getDesiredTypePermanent());
 			query.registerParameter("_DesiredEmploymentType", String.class, ParameterMode.IN).bindValue(company.getDesiredEmploymentType());
-			query.registerParameter("_preferredShift", String.class, ParameterMode.IN).bindValue(company.getPreferredShift());
-			query.registerParameter("_preferredWorkLocation", String.class, ParameterMode.IN).bindValue(company.getPreferredWorkLocation());
+			query.registerParameter("_PreferredShift", String.class, ParameterMode.IN).bindValue(company.getPreferredShift());
+			query.registerParameter("_PreferredWorkLocation", String.class, ParameterMode.IN).bindValue(company.getPreferredWorkLocation());
 			query.registerParameter("_ExpectedSalary", Double.class, ParameterMode.IN).bindValue(company.getExpectedSalary());
-			query.registerParameter("_roleCategory", String.class, ParameterMode.IN).bindValue(company.getRoleCategory());
-			query.registerParameter("_department", String.class, ParameterMode.IN).bindValue(company.getDepartment());
-			query.registerParameter("_currencyType", String.class, ParameterMode.IN).bindValue(company.getCurrencyType());
+			query.registerParameter("_RoleCategory", String.class, ParameterMode.IN).bindValue(company.getRoleCategory());
+			query.registerParameter("_Department", String.class, ParameterMode.IN).bindValue(company.getDepartment());
+			query.registerParameter("_CurrencyType", String.class, ParameterMode.IN).bindValue(company.getCurrencyType());
 			query.registerParameter("_AdminId", Long.class, ParameterMode.IN).bindValue(company.getCreatedBy());
 			query.registerParameter("_ProcessingResult", String.class, ParameterMode.OUT);
 			String result = query.getOutputParameterValue("_ProcessingResult").toString();
@@ -59,12 +59,48 @@ public class CompanyRepository {
 	}
 	
 	public String updateCompanyByIdRepo(Company company, long companyId) {
+		int rowsCount = 0;
+		Transaction tx = null;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		System.out.println(factory);
+		try(Session session = factory.openSession()) {
+			tx = session.beginTransaction();
+			ProcedureCall query = session.createStoredProcedureCall("sp_Company_InsUpdate");
+			query.registerParameter("_CompanyId", Long.class, ParameterMode.IN).bindValue(company.getCompanyId());
+			query.registerParameter("_Role", String.class, ParameterMode.IN).bindValue(company.getRole());
+			query.registerParameter("_Industry", String.class, ParameterMode.IN).bindValue(company.getIndustry());
+			query.registerParameter("_Designation", String.class, ParameterMode.IN).bindValue(company.getDesignation());
+			query.registerParameter("_CompanyName", String.class, ParameterMode.IN).bindValue(company.getCompanyName());
+			query.registerParameter("_FunctionalArea", String.class, ParameterMode.IN).bindValue(company.getFunctionalArea());
+			query.registerParameter("_DesiredTypePermanent", String.class, ParameterMode.IN).bindValue(company.getDesiredTypePermanent());
+			query.registerParameter("_DesiredEmploymentType", String.class, ParameterMode.IN).bindValue(company.getDesiredEmploymentType());
+			query.registerParameter("_PreferredShift", String.class, ParameterMode.IN).bindValue(company.getPreferredShift());
+			query.registerParameter("_PreferredWorkLocation", String.class, ParameterMode.IN).bindValue(company.getPreferredWorkLocation());
+			query.registerParameter("_ExpectedSalary", Double.class, ParameterMode.IN).bindValue(company.getExpectedSalary());
+			query.registerParameter("_RoleCategory", String.class, ParameterMode.IN).bindValue(company.getRoleCategory());
+			query.registerParameter("_Department", String.class, ParameterMode.IN).bindValue(company.getDepartment());
+			query.registerParameter("_CurrencyType", String.class, ParameterMode.IN).bindValue(company.getCurrencyType());
+			query.registerParameter("_AdminId", Long.class, ParameterMode.IN).bindValue(company.getUpdatedBy());
+			query.registerParameter("_ProcessingResult", String.class, ParameterMode.OUT);
+			String result = query.getOutputParameterValue("_ProcessingResult").toString();
+			rowsCount = query.executeUpdate();
+			System.out.println("Status: " + result);
+			tx.commit();
+			session.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			if(tx!=null)
+			{
+				tx.rollback();
+			}
+			e.printStackTrace();
+		}
 		return "Data updated successfully in company";
 	}
 	
 	
 	public ArrayList<Company> getAllCompanyRepo() {
-		
 		java.util.List<Company> allCompany = null;
 		Transaction tx = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -111,7 +147,25 @@ public class CompanyRepository {
 
 	
 	public String deleteByIdCompanyRepo(long companyId) {
+		int result = 0;
+		Transaction tx = null;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		System.out.println(factory);
+		try(Session session = factory.openSession()) {
+			tx = session.beginTransaction();
+			Query<Company> query = session.createSQLQuery("Call sp_Company_deleteByCompanyId(:companyId)").addEntity(Company.class);	
+			query.setParameter("companyId", companyId);
+			result = query.executeUpdate();
+			System.out.println("Rows affected" + result);
+			tx.commit();
+			session.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			if(tx!=null)
+			{
+				tx.rollback();
+			}
+		}
 		return "Data deleted of Company on the basis of companyId";
-		
 	}
 }

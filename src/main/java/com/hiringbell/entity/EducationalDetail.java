@@ -27,7 +27,7 @@ public class EducationalDetail {
 	String degreeName;
 	
 	@Column(name = "PassoutYear")
-	Date passoutYear;
+	String passoutYear;
 	
 	@Column(name = "Specialization")
 	String specialization;
@@ -83,11 +83,11 @@ public class EducationalDetail {
 		this.degreeName = degreeName;
 	}
 
-	public Date getPassoutYear() {
+	public String getPassoutYear() {
 		return passoutYear;
 	}
 
-	public void setPassoutYear(Date passoutYear) {
+	public void setPassoutYear(String passoutYear) {
 		this.passoutYear = passoutYear;
 	}
 
@@ -139,7 +139,23 @@ public class EducationalDetail {
 		AdminId = adminId;
 	}
 
-	public EducationalDetail(long educationalDetailId, String degreeName, Date passoutYear, String specialization,
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Long getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Long updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public EducationalDetail(long educationalDetailId, String degreeName, String passoutYear, String specialization,
 			String universityName, String courseType, String gradingSystem, String course, Long adminId) {
 		super();
 		this.educationalDetailId = educationalDetailId;

@@ -16,13 +16,28 @@ public class AccomplishmentsDetailService {
 	@Autowired
 	AccomplishmentsDetailRepo accomplishmentsDetailRepo;
 
-	public String addAccomplishmentsDetailService(AccomplishmentsDetail ad) {
-		var result = this.accomplishmentsDetailRepo.addAccomplishmentsDetailService(ad);
+	public String addAccomplishmentsDetailService(AccomplishmentsDetail accomplishmentsDetail) {
+		var result = this.accomplishmentsDetailRepo.addAccomplishmentsDetailRepo(accomplishmentsDetail);
 		return result;
 	}
 
-	public String updateAccomplishmentsDetailService(AccomplishmentsDetail ad, long accomplishmentId) {
-		var result = this.accomplishmentsDetailRepo.updateAccomplishmentsDetailRepo(ad, accomplishmentId);
+	public String updateAccomplishmentsDetailService(AccomplishmentsDetail accomplishmentsDetail, long accomplishmentId) throws Exception {
+		var result = "";
+		AccomplishmentsDetail value = this.accomplishmentsDetailRepo.getByIdAccomplishmentsDetailRepo(accomplishmentId);
+		if(value != null)
+		{
+			value.setOnlineProfile(accomplishmentsDetail.getOnlineProfile());
+			value.setWorkSample(accomplishmentsDetail.getWorkSample());
+			value.setResearch(accomplishmentsDetail.getResearch());
+			value.setPresentation(accomplishmentsDetail.getPresentation());
+			value.setPatent(accomplishmentsDetail.getPatent());
+			value.setCertification(accomplishmentsDetail.getCertification());
+			value.setAdminId(accomplishmentsDetail.getAdminId());
+		result = this.accomplishmentsDetailRepo.updateAccomplishmentsDetailRepo(value, accomplishmentId);
+		}
+		else {
+			throw new Exception("Exception Message");
+		}
 		return result;
 	}
 	

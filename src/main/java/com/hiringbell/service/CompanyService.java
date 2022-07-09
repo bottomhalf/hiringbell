@@ -27,10 +27,18 @@ public class CompanyService {
 		if(value != null) {
 			value.setRole(company.getRole());
 			value.setIndustry(company.getIndustry());
-			
-			
+			value.setDesignation(company.getDesignation());
+			value.setCompanyName(company.getCompanyName());
+			value.setFunctionalArea(company.getFunctionalArea());
+			value.setDesiredTypePermanent(company.getDesiredTypePermanent());
+			value.setDesiredEmploymentType(company.getDesiredEmploymentType());
+			value.setPreferredShift(company.getPreferredShift());
+			value.setPreferredWorkLocation(company.getPreferredWorkLocation());
+			value.setExpectedSalary(company.getExpectedSalary());
+			value.setRoleCategory(company.getRoleCategory());
+			value.setDepartment(company.getDepartment());
+			value.setCurrencyType(company.getCurrencyType());
 			value.setAdminId(company.getAdminId());
-			
 			result = this.companyRepository.updateCompanyByIdRepo(value, companyId);
 		}
 		else {

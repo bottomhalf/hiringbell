@@ -31,5 +31,13 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
         <mapping class="com.hiringbell.entity.Login" />
         <mapping class="com.hiringbell.entity.User" />
+        <mapping class="com.hiringbell.entity.AccomplishmentsDetail" />
+        <mapping class="com.hiringbell.entity.Company"/>
+        <mapping class="com.hiringbell.entity.EducationalDetail" />
+        <mapping class="com.hiringbell.entity.EmploymentDetail" />
+        <mapping class="com.hiringbell.entity.PersonalDetail" />
+        <mapping class="com.hiringbell.entity.ProjectDetail" />
+        <mapping class="com.hiringbell.entity.SkillDetail" />
+        
     </session-factory>
 </hibernate-configuration>

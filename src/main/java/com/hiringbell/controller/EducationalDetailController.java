@@ -21,15 +21,15 @@ public class EducationalDetailController extends BaseController {
 	@Autowired
 	EducationalDetailService educationalDetailService;
 	
-	@PostMapping("/addED")
-	public ResponseModal addEducationalDetail(@RequestBody EducationalDetail ed) {
-		var result = this.educationalDetailService.addEducationalDetailService(ed);
+	@PostMapping("/addEducationalDetail")
+	public ResponseModal addEducationalDetail(@RequestBody EducationalDetail educationalDetail) {
+		var result = this.educationalDetailService.addEducationalDetailService(educationalDetail);
 		return BuildOk(result);
 	}
 	
-	@PutMapping("/updateEducationalDetail/{edId}")
-	public ResponseModal updateEducationalDetail(@RequestBody EducationalDetail ed, @PathVariable long educationalDetailId) {
-		var result = this.educationalDetailService.updateEducationalDetailService(ed, educationalDetailId);
+	@PutMapping("/updateEducationalDetail/{educationalDetailId}")
+	public ResponseModal updateEducationalDetail(@RequestBody EducationalDetail educationalDetail, @PathVariable ("educationalDetailId") long educationalDetailId) {
+		var result = this.educationalDetailService.updateEducationalDetailService(educationalDetail, educationalDetailId);
 		return BuildOk(result);
 	}
 	
@@ -40,14 +40,14 @@ public class EducationalDetailController extends BaseController {
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/getById/{edId}")
-	public ResponseModal getByIdEducationalDetail(@PathVariable ("edId") long educationalDetailId) {
+	@GetMapping("/getById/{educationalDetailId}")
+	public ResponseModal getByIdEducationalDetail(@PathVariable ("educationalDetailId") long educationalDetailId) {
 		var result = this.educationalDetailService.getByIdEducationalDetailService(educationalDetailId);
 		return BuildOk(result);
 	}
 	
-	@DeleteMapping("/deleteById/{edId}")
-	public ResponseModal deleteByIdEducationalDetail(@PathVariable("edId") long educationalDetailId) {
+	@DeleteMapping("/deleteById/{educationalDetailId}")
+	public ResponseModal deleteByIdEducationalDetail(@PathVariable("educationalDetailId") long educationalDetailId) {
 		var result = this.educationalDetailService.deleteByIdEducationalDetailService(educationalDetailId);
 		return BuildOk(result);
 	}

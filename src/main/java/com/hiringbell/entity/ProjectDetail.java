@@ -208,6 +208,22 @@ public class ProjectDetail {
 		public void setAdminId(Long adminId) {
 			AdminId = adminId;
 		}
+	
+		public Long getCreatedBy() {
+			return createdBy;
+		}
+
+		public void setCreatedBy(Long createdBy) {
+			this.createdBy = createdBy;
+		}
+
+		public Long getUpdatedBy() {
+			return updatedBy;
+		}
+
+		public void setUpdatedBy(Long updatedBy) {
+			this.updatedBy = updatedBy;
+		}
 
 		public ProjectDetail(long projectDetailId, String projectTitle, String projectTag, int projectWorkingYear,
 				int projectWorkingMonth, int projectWorkedYear, int projectWorkedMonth, String projectStatus,

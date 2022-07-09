@@ -15,13 +15,13 @@ public class EducationalDetailService {
 	EducationalDetailRepository educationalDetailRepository;
 	
 	
-	public String addEducationalDetailService(EducationalDetail ed) {
-		var result = this.educationalDetailRepository.addEducationalDetailRepo(ed);
+	public String addEducationalDetailService(EducationalDetail educationalDetail) {
+		var result = this.educationalDetailRepository.addEducationalDetailRepo(educationalDetail);
 		return result;
 	}
 	
-	public String updateEducationalDetailService(EducationalDetail ed, long educationalDetailId) {
-		var result = this.educationalDetailRepository.updateEducationalDetailRepo(ed, educationalDetailId);
+	public String updateEducationalDetailService(EducationalDetail educationalDetail, long educationalDetailId) {
+		var result = this.educationalDetailRepository.updateEducationalDetailRepo(educationalDetail, educationalDetailId);
 		return result;
 	}
 
