@@ -55,7 +55,6 @@ public class User {
 	@Column(name = "UpdatedOn")
 	Date updatedOn;
 	
-	
 
 	@Override
 	public String toString() {
@@ -129,6 +128,14 @@ public class User {
 		this.mobile = mobile;
 	}
 
+	public Long getAdminId() {
+		return AdminId;
+	}
+
+	public void setAdminId(Long adminId) {
+		AdminId = adminId;
+	}
+
 	public Long getCreatedBy() {
 		return createdBy;
 	}
@@ -160,4 +167,26 @@ public class User {
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
+
+	public User(Long userId, String password, String firstName, String lastName, String address, String email,
+			String mobile, String companyName, Long adminId, Long createdBy, Long updatedBy) {
+		super();
+		this.userId = userId;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+		this.mobile = mobile;
+		this.companyName = companyName;
+		AdminId = adminId;
+		this.createdBy = createdBy;
+		this.updatedBy = updatedBy;
+	}
+
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 }

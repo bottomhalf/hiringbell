@@ -1,6 +1,7 @@
 package com.hiringbell.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,34 +31,33 @@ public class UserController extends BaseController {
 	//}
 	
 	@GetMapping("/userAll")
-	public ResponseModal getUserAllByProcedure()
-	{
+	public ResponseModal getUserAllByProcedure(){
 		var result = this.userService.getUserAllByProcedureService();
 		return BuildOk(result);
 	}
 	
 	@GetMapping("/getUserByIdWithProcedure/{userId}")
-	public ResponseModal getUserByIdWithProcedure(@PathVariable("userId") long userId)
-	{
+	public ResponseModal getUserByIdWithProcedure(@PathVariable("userId") long userId){
 		var result = this.userService.getUserByIdWithProcedureService(userId);
-		
 		return BuildOk(result);
 	}
 	
 	
 	@PutMapping("/updateUserById/{userId}")
-	public ResponseModal updateUserById(@RequestBody User user, @PathVariable("userId") long userId)
-	{
+	public ResponseModal updateUserById(@RequestBody User user, @PathVariable("userId") long userId) throws Exception{
 		var result = this.userService.updateUserByIdService(user, userId);
-		
 		return BuildOk(result) ;
 	}
 	
-	@PostMapping("/addOrUpdateUser")
-	public ResponseModal addUser(@RequestBody User user)
-	{
+	@PostMapping("/addUser")
+	public ResponseModal addUser(@RequestBody User user){
 		var result = this.userService.addUserService(user);
-		
+		return BuildOk(result);
+	}
+	
+	@DeleteMapping("/deleteUserByUserId/{userId}")
+	public ResponseModal deleteUserByUserId(@PathVariable("userId") long userId) {
+		var result = this.userService.deleteUserByUserIdService(userId);
 		return BuildOk(result);
 	}
 }

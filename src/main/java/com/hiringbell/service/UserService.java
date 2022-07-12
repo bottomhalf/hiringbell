@@ -16,44 +16,44 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public User getUserByIdService(long userId)
-	{
-		var result = this.userRepository.getUserByIdRepo(userId);
-		
+	
+	public String addUserService(User user){
+		var result = this.userRepository.addUserRepository(user);
 		return result;
 	}
 	
-	
+	public String updateUserByIdService(User user, long userId) throws Exception{
+		var result = "";
+		User value = this.userRepository.getUserByIdWithProcedureRepository(userId);
+		if(value != null) {
+			value.setFirstName(user.getFirstName());
+			value.setLastName(user.getLastName());
+			value.setAddress(user.getAddress());
+			value.setEmail(user.getEmail());
+			value.setMobile(user.getMobile());
+			value.setCompanyName(user.getCompanyName());
+			value.setAdminId(user.getAdminId());
+			result = this.userRepository.updateUserByIdRepo(value, userId);
+		}
+		else {
+			throw new Exception();
+		}
+		return result;
+	}
+
 	public ArrayList<User> getUserAllByProcedureService() {
-		// TODO Auto-generated method stub
 		var result = this.userRepository.getUserAllByProcedureRepo();
-		
 		return result;	
 	}
 	
 	public User getUserByIdWithProcedureService(long userId) {
 		var result = this.userRepository.getUserByIdWithProcedureRepository(userId);
-		
 		return result;
 	}
 	
-	
-	public String updateUserByIdService(User user, long userId)
-	{
-	
-		var status = this.userRepository.updateUserByIdRepo(user, userId);
-		return "Updated";
-	}
-	
-	
-	
-	public String addUserService(User user)
-	{
-		var result = this.userRepository.addUserRepository(user);
+	public String deleteUserByUserIdService(long userId) {
+		var result = this.userRepository.deleteUserByUserIdRepo(userId);
 		return result;
 	}
-
-
 	
-
 }
