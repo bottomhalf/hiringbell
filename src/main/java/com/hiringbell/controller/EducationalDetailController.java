@@ -28,7 +28,7 @@ public class EducationalDetailController extends BaseController {
 	}
 	
 	@PutMapping("/updateEducationalDetail/{educationalDetailId}")
-	public ResponseModal updateEducationalDetail(@RequestBody EducationalDetail educationalDetail, @PathVariable ("educationalDetailId") long educationalDetailId) {
+	public ResponseModal updateEducationalDetail(@RequestBody EducationalDetail educationalDetail, @PathVariable ("educationalDetailId") long educationalDetailId) throws Exception {
 		var result = this.educationalDetailService.updateEducationalDetailService(educationalDetail, educationalDetailId);
 		return BuildOk(result);
 	}

@@ -67,18 +67,19 @@ public class EmploymentDetail {
 
 	@Override
 	public String toString() {
-		return "EmploymentDetail [empDetailId=" + employmentDetailId + ", organization=" + organization + ", designation="
-				+ designation + ", employmentStatus=" + employmentStatus + ", years=" + years + ", months=" + months
-				+ ", currentSalary=" + currentSalary + ", currencyType=" + currencyType + ", experties=" + experties
-				+ ", jobProfile=" + jobProfile + ", AdminId=" + AdminId + "]";
+		return "EmploymentDetail [employmentDetailId=" + employmentDetailId + ", organization=" + organization
+				+ ", designation=" + designation + ", employmentStatus=" + employmentStatus + ", years=" + years
+				+ ", months=" + months + ", currentSalary=" + currentSalary + ", currencyType=" + currencyType
+				+ ", experties=" + experties + ", jobProfile=" + jobProfile + ", AdminId=" + AdminId + ", createdBy="
+				+ createdBy + ", updatedBy=" + updatedBy + "]";
 	}
 
-	public long getEmpDetailId() {
+	public long getEmploymentDetailId() {
 		return employmentDetailId;
 	}
 
-	public void setEmpDetailId(long empDetailId) {
-		this.employmentDetailId = empDetailId;
+	public void setEmploymentDetailId(long employmentDetailId) {
+		this.employmentDetailId = employmentDetailId;
 	}
 
 	public String getOrganization() {
@@ -161,11 +162,27 @@ public class EmploymentDetail {
 		AdminId = adminId;
 	}
 
-	public EmploymentDetail(long empDetailId, String organization, String designation, String employmentStatus,
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Long getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Long updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public EmploymentDetail(long employmentDetailId, String organization, String designation, String employmentStatus,
 			int years, int months, double currentSalary, String currencyType, String experties, String jobProfile,
-			Long adminId) {
+			Long adminId, Long createdBy, Long updatedBy) {
 		super();
-		this.employmentDetailId = empDetailId;
+		this.employmentDetailId = employmentDetailId;
 		this.organization = organization;
 		this.designation = designation;
 		this.employmentStatus = employmentStatus;
@@ -176,11 +193,13 @@ public class EmploymentDetail {
 		this.experties = experties;
 		this.jobProfile = jobProfile;
 		AdminId = adminId;
+		this.createdBy = createdBy;
+		this.updatedBy = updatedBy;
 	}
 
 	public EmploymentDetail() {
 		super();
 		// TODO Auto-generated constructor stub
-	}	
+	}
 
 }

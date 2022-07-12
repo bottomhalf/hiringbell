@@ -1,5 +1,7 @@
 package com.hiringbell.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -19,17 +21,34 @@ public class EmploymentDetailService {
 		return result;
 	}
 	
-	public String updateEmploymentDetailService(EmploymentDetail employmentDetail, long employmentDetailId) {
-		var result = this.employmentDetailRepository.updateEmploymentDetailRepo(employmentDetail, employmentDetailId);
+	public String updateEmploymentDetailService(EmploymentDetail employmentDetail, long employmentDetailId) throws Exception {
+		var result = "";
+		EmploymentDetail value = this.employmentDetailRepository.getByIdEmploymentDetailRepo(employmentDetailId);
+		if(value != null) {
+			value.setOrganization(employmentDetail.getOrganization());
+			value.setDesignation(employmentDetail.getDesignation());
+			value.setEmploymentStatus(employmentDetail.getEmploymentStatus());
+			value.setYears(employmentDetail.getYears());
+			value.setMonths(employmentDetail.getMonths());
+			value.setCurrentSalary(employmentDetail.getCurrentSalary());
+			value.setCurrencyType(employmentDetail.getCurrencyType());
+			value.setExperties(employmentDetail.getExperties());
+			value.setJobProfile(employmentDetail.getJobProfile());
+			value.setAdminId(employmentDetail.getAdminId());
+			result = this.employmentDetailRepository.updateEmploymentDetailRepo(value, employmentDetailId);
+		}
+		else {
+			throw new Exception();
+		}
 		return result;
 	}
 
-	public String getAllEmploymentDetailService() {
+	public ArrayList<EmploymentDetail> getAllEmploymentDetailService() {
 		var result = this.employmentDetailRepository.getAllEmploymentDetailRepo();
 		return result;
 	}
 	
-	public String getByIdEmploymentDetailService(long employmentDetailId) {
+	public EmploymentDetail getByIdEmploymentDetailService(long employmentDetailId) {
 		var result = this.employmentDetailRepository.getByIdEmploymentDetailRepo(employmentDetailId);
 		return result;
 	}

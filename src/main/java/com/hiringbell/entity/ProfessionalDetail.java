@@ -80,7 +80,8 @@ public class ProfessionalDetail {
 				+ ", totalEperienceinMonths=" + totalEperienceinMonths + ", salaryPackage=" + salaryPackage
 				+ ", noticePeriod=" + noticePeriod + ", expecetedCtc=" + expecetedCtc + ", currentLocation="
 				+ currentLocation + ", preferredLocations=" + preferredLocations + ", professionalDetailJson="
-				+ professionalDetailJson + ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + "]";
+				+ professionalDetailJson + ", AdminId=" + AdminId + ", createdBy=" + createdBy + ", updatedBy="
+				+ updatedBy + "]";
 	}
 
 	public Long getUserId() {
@@ -187,26 +188,34 @@ public class ProfessionalDetail {
 		this.professionalDetailJson = professionalDetailJson;
 	}
 
-	public Date getCreatedOn() {
-		return createdOn;
+	public Long getAdminId() {
+		return AdminId;
 	}
 
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
+	public void setAdminId(Long adminId) {
+		AdminId = adminId;
 	}
 
-	public Date getUpdatedOn() {
-		return updatedOn;
+	public Long getCreatedBy() {
+		return createdBy;
 	}
 
-	public void setUpdatedOn(Date updatedOn) {
-		this.updatedOn = updatedOn;
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Long getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Long updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	public ProfessionalDetail(Long userId, String mobileNumber, String email, String firstName, String lastName,
 			Date dateOfApplication, int totalEperienceinMonths, double salaryPackage, int noticePeriod,
 			double expecetedCtc, String currentLocation, String preferredLocations, String professionalDetailJson,
-			Date createdOn, Date updatedOn) {
+			Long adminId, Long createdBy, Long updatedBy) {
 		super();
 		this.userId = userId;
 		this.mobileNumber = mobileNumber;
@@ -221,8 +230,9 @@ public class ProfessionalDetail {
 		this.currentLocation = currentLocation;
 		this.preferredLocations = preferredLocations;
 		this.professionalDetailJson = professionalDetailJson;
-		this.createdOn = createdOn;
-		this.updatedOn = updatedOn;
+		AdminId = adminId;
+		this.createdBy = createdBy;
+		this.updatedBy = updatedBy;
 	}
 
 	public ProfessionalDetail() {

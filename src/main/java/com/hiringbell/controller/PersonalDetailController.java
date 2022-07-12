@@ -29,7 +29,7 @@ public class PersonalDetailController extends BaseController {
 	}
 	
 	@PutMapping("/updatePersonalDetail/{personalDetailId}")
-	public ResponseModal updatePersonalDetail(@RequestBody PersonalDetail personalDetail, @PathVariable("personalDetailId") long personalDetailId) {
+	public ResponseModal updatePersonalDetail(@RequestBody PersonalDetail personalDetail, @PathVariable("personalDetailId") long personalDetailId) throws Exception {
 		var result = this.personalDetailService.updatePersonalDetailService(personalDetail, personalDetailId);
 		return BuildOk(result);
 	}

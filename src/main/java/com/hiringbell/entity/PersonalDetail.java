@@ -54,7 +54,7 @@ public class PersonalDetail {
 	String permitOtherCountry;
 	
 	@Column(name = "LanguageDetails")
-	ArrayList<LanguageDetail> languageDetails;
+	String languageDetails;
 	
 	@Transient
 	Long AdminId;
@@ -77,7 +77,7 @@ public class PersonalDetail {
 				+ ", address=" + address + ", homeTown=" + homeTown + ", pinCode=" + pinCode + ", maritalStatus="
 				+ maritalStatus + ", category=" + category + ", differentlyAbled=" + differentlyAbled + ", permitUSA="
 				+ permitUSA + ", permitOtherCountry=" + permitOtherCountry + ", languageDetails=" + languageDetails
-				+ ", AdminId=" + AdminId + "]";
+				+ ", AdminId=" + AdminId + ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + "]";
 	}
 
 	public long getPersonalDetailId() {
@@ -168,11 +168,11 @@ public class PersonalDetail {
 		this.permitOtherCountry = permitOtherCountry;
 	}
 
-	public ArrayList<LanguageDetail> getLanguageDetails() {
+	public String getLanguageDetails() {
 		return languageDetails;
 	}
 
-	public void setLanguageDetails(ArrayList<LanguageDetail> languageDetails) {
+	public void setLanguageDetails(String languageDetails) {
 		this.languageDetails = languageDetails;
 	}
 
@@ -202,7 +202,7 @@ public class PersonalDetail {
 
 	public PersonalDetail(long personalDetailId, Date dob, String gender, String address, String homeTown, int pinCode,
 			String maritalStatus, String category, String differentlyAbled, String permitUSA, String permitOtherCountry,
-			ArrayList<LanguageDetail> languageDetails, Long adminId) {
+			String languageDetails, Long adminId, Long createdBy, Long updatedBy) {
 		super();
 		this.personalDetailId = personalDetailId;
 		this.dob = dob;
@@ -217,10 +217,13 @@ public class PersonalDetail {
 		this.permitOtherCountry = permitOtherCountry;
 		this.languageDetails = languageDetails;
 		AdminId = adminId;
+		this.createdBy = createdBy;
+		this.updatedBy = updatedBy;
 	}
 
 	public PersonalDetail() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 }

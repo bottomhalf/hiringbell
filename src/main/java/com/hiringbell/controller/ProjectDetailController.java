@@ -30,7 +30,7 @@ public class ProjectDetailController extends BaseController {
 	}
 	
 	@PutMapping("/updateProjectDetail/{projectDetailId}")
-	public ResponseModal updateProjectDetail(@RequestBody ProjectDetail projectDetail, @PathVariable("projectDetailId") long projectDetailId) {
+	public ResponseModal updateProjectDetail(@RequestBody ProjectDetail projectDetail, @PathVariable("projectDetailId") long projectDetailId) throws Exception {
 		var result = this.projectDetailService.updateProjectDetailService(projectDetail, projectDetailId);
 		return BuildOk(result);
 	}
@@ -42,7 +42,7 @@ public class ProjectDetailController extends BaseController {
 	}
 	
 	@GetMapping("/getById/{projectDetailId}")
-	public ResponseModal getByIdProjectDetail(@PathVariable("projectDetailId") long projectDetailId) {
+	public ResponseModal getByIdProjectDetail(@PathVariable("projectDetailId") long projectDetailId){
 		var result = this.projectDetailService.getByIdProjectDetailService(projectDetailId);
 		return BuildOk(result);
 	}

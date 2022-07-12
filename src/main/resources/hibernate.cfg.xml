@@ -36,6 +36,7 @@
         <mapping class="com.hiringbell.entity.EducationalDetail" />
         <mapping class="com.hiringbell.entity.EmploymentDetail" />
         <mapping class="com.hiringbell.entity.PersonalDetail" />
+        <mapping class="com.hiringbell.entity.ProfessionalDetail" />
         <mapping class="com.hiringbell.entity.ProjectDetail" />
         <mapping class="com.hiringbell.entity.SkillDetail" />
         

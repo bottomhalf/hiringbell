@@ -22,23 +22,23 @@ public class ProfessionalDetailController extends BaseController {
 	ProfessionalDetailService professionalDetailService;
 	
 	
-	@PostMapping("/addPD")
-	public ResponseModal addProfessionalDetail(@RequestBody ProfessionalDetail pd)
+	@PostMapping("/addProfessionalDetail")
+	public ResponseModal addProfessionalDetail(@RequestBody ProfessionalDetail professionalDetail)
 	{
-		var result = this.professionalDetailService.addProfessionalDetailService(pd);
+		var result = this.professionalDetailService.addProfessionalDetailService(professionalDetail);
 		
 		return BuildOk(result);
 	}
 	
-	@PutMapping("/UpdatePD/{userId}")
-	public ResponseModal updateProfessionalDetail(@RequestBody ProfessionalDetail pd, @PathVariable("userId") long userId)
+	@PutMapping("/UpdateProfessionalDetail/{userId}")
+	public ResponseModal updateProfessionalDetail(@RequestBody ProfessionalDetail professionalDetail, @PathVariable("userId") long userId) throws Exception
 	{
-		var result = this.professionalDetailService.updateProfessionalDetailService(pd,userId);
+		var result = this.professionalDetailService.updateProfessionalDetailService(professionalDetail,userId);
 		
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/allPD")
+	@GetMapping("/getAllProfessionalDetail")
 	public ResponseModal getAllProfessionalDetail()
 	{
 		var result = this.professionalDetailService.getAllProfessionalDetailService();

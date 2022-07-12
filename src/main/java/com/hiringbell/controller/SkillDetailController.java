@@ -28,7 +28,7 @@ public class SkillDetailController extends BaseController {
 	}
 	
 	@PutMapping("/updateSkillDetail/{skillDetailId}")
-	public ResponseModal updateSkillDetail(@RequestBody SkillDetail skillDetail, @PathVariable("skillDetailId") long skillDetailId) {
+	public ResponseModal updateSkillDetail(@RequestBody SkillDetail skillDetail, @PathVariable("skillDetailId") long skillDetailId) throws Exception {
 		var result = this.skillDetailService.updateSkillDetailService(skillDetail, skillDetailId);
 		return BuildOk(result);
 	}

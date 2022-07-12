@@ -21,31 +21,31 @@ public class EmploymentDetailController extends BaseController {
 	@Autowired
 	EmploymentDetailService employmentDetailService;
 	
-	@PostMapping("/addEmpDetail")
+	@PostMapping("/addEmploymentDetail")
 	public ResponseModal addEmploymentDetail(@RequestBody EmploymentDetail employmentDetail) {
 		var result = this.employmentDetailService.addEmploymentDetailService(employmentDetail);
 		return BuildOk(result);
 	}
 	
-	@PutMapping("/updateEmpDetail/{employmentDetailId}")
-	public ResponseModal updateEmploymentDetail(@RequestBody EmploymentDetail employmentDetail, @PathVariable("employmentDetailId") long employmentDetailId) {
+	@PutMapping("/updateEmploymentDetail/{employmentDetailId}")
+	public ResponseModal updateEmploymentDetail(@RequestBody EmploymentDetail employmentDetail, @PathVariable("employmentDetailId") long employmentDetailId) throws Exception {
 		var result = this.employmentDetailService.updateEmploymentDetailService(employmentDetail, employmentDetailId);
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/getAllEmpDetail")
+	@GetMapping("/getAllEmploymentDetail")
 	public ResponseModal getAllEmploymentDetail() {
 		var result = this.employmentDetailService.getAllEmploymentDetailService();
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/getByempDetailId/{employmentDetailId}")
+	@GetMapping("/getByEmploymentDetailId/{employmentDetailId}")
 	public ResponseModal getByIdEmploymentDetail(@PathVariable ("employmentDetailId") long employmentDetailId) {
 		var result = this.employmentDetailService.getByIdEmploymentDetailService(employmentDetailId);
 		return BuildOk(result);
 	}
 	
-	@DeleteMapping("/deleteByempDetailId/{employmentDetailId}")
+	@DeleteMapping("/deleteByEmploymentDetailId/{employmentDetailId}")
 	public ResponseModal deleteByIdEmploymentDetail (@PathVariable ("employmentDetailId") long employmentDetailId) {
 		var result = this.employmentDetailService.deleteByIdEmploymentDetailService(employmentDetailId);
 		return BuildOk(result);
