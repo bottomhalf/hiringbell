@@ -1,7 +1,6 @@
 package com.hiringbell.entity;
 
 import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,32 +22,44 @@ public class EmploymentDetail {
 	@Column(name = "EmploymentDetailId")
 	long employmentDetailId;
 	
-	@Column(name = "Organization")
-	String organization;
+	@Column(name = "UserId")
+	long userId;
 	
 	@Column(name = "Designation")
 	String designation;
 	
-	@Column(name = "EmploymentStatus")
-	String employmentStatus;
+	@Column(name = "CompanyName")
+	String companyName;
 	
-	@Column(name = "Years")
-	int years;
+	@Column(name = "IsCurrentCompany")
+	boolean isCurrentCompany;
 	
-	@Column(name = "Months")
-	int months;
+	@Column(name = "JoiningDate")
+	Date joiningDate;
 	
-	@Column(name = "CurrentSalary")
-	double currentSalary;
+	@Column(name = "WorkedTill")
+	Date workedTill;
 	
 	@Column(name = "CurrencyType")
-	String currencyType;
+	boolean currencyType;
 	
-	@Column(name = "Experties")
-	String experties;
+	@Column(name = "CurrentAnnualSalary")
+	double currentAnnualSalary;
+	
+	@Column(name = "SkillsUsed")
+	String skillsUsed;
 	
 	@Column(name = "JobProfile")
 	String jobProfile;
+	
+	@Column(name = "NoticePeriod")
+	int noticePeriod;
+	
+	@Column(name = "IsServingNoticePeriod")
+	boolean isServingNoticePeriod;
+	
+	@Column(name = "RemainingDaysOfNoticePeriod")
+	int remainingDaysOfNoticePeriod;
 	
 	@Transient
 	Long AdminId;
@@ -67,11 +78,13 @@ public class EmploymentDetail {
 
 	@Override
 	public String toString() {
-		return "EmploymentDetail [employmentDetailId=" + employmentDetailId + ", organization=" + organization
-				+ ", designation=" + designation + ", employmentStatus=" + employmentStatus + ", years=" + years
-				+ ", months=" + months + ", currentSalary=" + currentSalary + ", currencyType=" + currencyType
-				+ ", experties=" + experties + ", jobProfile=" + jobProfile + ", AdminId=" + AdminId + ", createdBy="
-				+ createdBy + ", updatedBy=" + updatedBy + "]";
+		return "EmploymentDetail [employmentDetailId=" + employmentDetailId + ", userId=" + userId + ", designation="
+				+ designation + ", companyName=" + companyName + ", isCurrentCompany=" + isCurrentCompany
+				+ ", joiningDate=" + joiningDate + ", workedTill=" + workedTill + ", currencyType=" + currencyType
+				+ ", currentAnnualSalary=" + currentAnnualSalary + ", skillsUsed=" + skillsUsed + ", jobProfile="
+				+ jobProfile + ", noticePeriod=" + noticePeriod + ", isServingNoticePeriod=" + isServingNoticePeriod
+				+ ", remainingDaysOfNoticePeriod=" + remainingDaysOfNoticePeriod + ", AdminId=" + AdminId
+				+ ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + "]";
 	}
 
 	public long getEmploymentDetailId() {
@@ -82,12 +95,12 @@ public class EmploymentDetail {
 		this.employmentDetailId = employmentDetailId;
 	}
 
-	public String getOrganization() {
-		return organization;
+	public long getUserId() {
+		return userId;
 	}
 
-	public void setOrganization(String organization) {
-		this.organization = organization;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public String getDesignation() {
@@ -98,52 +111,60 @@ public class EmploymentDetail {
 		this.designation = designation;
 	}
 
-	public String getEmploymentStatus() {
-		return employmentStatus;
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public void setEmploymentStatus(String employmentStatus) {
-		this.employmentStatus = employmentStatus;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+	
+	public boolean getIsCurrentCompany() {
+		return isCurrentCompany;
 	}
 
-	public int getYears() {
-		return years;
+	public void setIsCurrentCompany(boolean isCurrentCompany) {
+		this.isCurrentCompany = isCurrentCompany;
 	}
 
-	public void setYears(int years) {
-		this.years = years;
+	public Date getJoiningDate() {
+		return joiningDate;
 	}
 
-	public int getMonths() {
-		return months;
+	public void setJoiningDate(Date joiningDate) {
+		this.joiningDate = joiningDate;
 	}
 
-	public void setMonths(int months) {
-		this.months = months;
+	public Date getWorkedTill() {
+		return workedTill;
 	}
 
-	public double getCurrentSalary() {
-		return currentSalary;
+	public void setWorkedTill(Date workedTill) {
+		this.workedTill = workedTill;
 	}
 
-	public void setCurrentSalary(double currentSalary) {
-		this.currentSalary = currentSalary;
-	}
-
-	public String getCurrencyType() {
+	public boolean getCurrencyType() {
 		return currencyType;
 	}
 
-	public void setCurrencyType(String currencyType) {
+	public void setCurrencyType(boolean currencyType) {
 		this.currencyType = currencyType;
 	}
 
-	public String getExperties() {
-		return experties;
+	public double getCurrentAnnualSalary() {
+		return currentAnnualSalary;
 	}
 
-	public void setExperties(String experties) {
-		this.experties = experties;
+	public void setCurrentAnnualSalary(double currentAnnualSalary) {
+		this.currentAnnualSalary = currentAnnualSalary;
+	}
+
+	public String getSkillsUsed() {
+		return skillsUsed;
+	}
+
+	public void setSkillsUsed(String skillsUsed) {
+		this.skillsUsed = skillsUsed;
 	}
 
 	public String getJobProfile() {
@@ -152,6 +173,30 @@ public class EmploymentDetail {
 
 	public void setJobProfile(String jobProfile) {
 		this.jobProfile = jobProfile;
+	}
+
+	public int getNoticePeriod() {
+		return noticePeriod;
+	}
+
+	public void setNoticePeriod(int noticePeriod) {
+		this.noticePeriod = noticePeriod;
+	}
+
+	public boolean getIsServingNoticePeriod() {
+		return isServingNoticePeriod;
+	}
+
+	public void setIsServingNoticePeriod(boolean isServingNoticePeriod) {
+		this.isServingNoticePeriod = isServingNoticePeriod;
+	}
+
+	public int getRemainingDaysOfNoticePeriod() {
+		return remainingDaysOfNoticePeriod;
+	}
+
+	public void setRemainingDaysOfNoticePeriod(int remainingDaysOfNoticePeriod) {
+		this.remainingDaysOfNoticePeriod = remainingDaysOfNoticePeriod;
 	}
 
 	public Long getAdminId() {
@@ -178,20 +223,26 @@ public class EmploymentDetail {
 		this.updatedBy = updatedBy;
 	}
 
-	public EmploymentDetail(long employmentDetailId, String organization, String designation, String employmentStatus,
-			int years, int months, double currentSalary, String currencyType, String experties, String jobProfile,
-			Long adminId, Long createdBy, Long updatedBy) {
+	public EmploymentDetail(long employmentDetailId, long userId, String designation, String companyName,
+			boolean isCurrentCompany, Date joiningDate, Date workedTill, boolean currencyType,
+			double currentAnnualSalary, String skillsUsed, String jobProfile, int noticePeriod,
+			boolean isServingNoticePeriod, int remainingDaysOfNoticePeriod, Long adminId, Long createdBy,
+			Long updatedBy) {
 		super();
 		this.employmentDetailId = employmentDetailId;
-		this.organization = organization;
+		this.userId = userId;
 		this.designation = designation;
-		this.employmentStatus = employmentStatus;
-		this.years = years;
-		this.months = months;
-		this.currentSalary = currentSalary;
+		this.companyName = companyName;
+		this.isCurrentCompany = isCurrentCompany;
+		this.joiningDate = joiningDate;
+		this.workedTill = workedTill;
 		this.currencyType = currencyType;
-		this.experties = experties;
+		this.currentAnnualSalary = currentAnnualSalary;
+		this.skillsUsed = skillsUsed;
 		this.jobProfile = jobProfile;
+		this.noticePeriod = noticePeriod;
+		this.isServingNoticePeriod = isServingNoticePeriod;
+		this.remainingDaysOfNoticePeriod = remainingDaysOfNoticePeriod;
 		AdminId = adminId;
 		this.createdBy = createdBy;
 		this.updatedBy = updatedBy;

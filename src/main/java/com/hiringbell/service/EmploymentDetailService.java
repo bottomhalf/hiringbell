@@ -25,15 +25,19 @@ public class EmploymentDetailService {
 		var result = "";
 		EmploymentDetail value = this.employmentDetailRepository.getByIdEmploymentDetailRepo(employmentDetailId);
 		if(value != null) {
-			value.setOrganization(employmentDetail.getOrganization());
 			value.setDesignation(employmentDetail.getDesignation());
-			value.setEmploymentStatus(employmentDetail.getEmploymentStatus());
-			value.setYears(employmentDetail.getYears());
-			value.setMonths(employmentDetail.getMonths());
-			value.setCurrentSalary(employmentDetail.getCurrentSalary());
+			value.setUserId(employmentDetail.getUserId());
+			value.setCompanyName(employmentDetail.getCompanyName());
+			value.setIsCurrentCompany(employmentDetail.getIsCurrentCompany());
+			value.setJoiningDate(employmentDetail.getJoiningDate());
+			value.setWorkedTill(employmentDetail.getWorkedTill());
 			value.setCurrencyType(employmentDetail.getCurrencyType());
-			value.setExperties(employmentDetail.getExperties());
+			value.setCurrentAnnualSalary(employmentDetail.getCurrentAnnualSalary());
+			value.setSkillsUsed(employmentDetail.getSkillsUsed());
 			value.setJobProfile(employmentDetail.getJobProfile());
+			value.setNoticePeriod(employmentDetail.getNoticePeriod());
+			value.setIsServingNoticePeriod(employmentDetail.getIsServingNoticePeriod());
+			value.setRemainingDaysOfNoticePeriod(employmentDetail.getRemainingDaysOfNoticePeriod());
 			value.setAdminId(employmentDetail.getAdminId());
 			result = this.employmentDetailRepository.updateEmploymentDetailRepo(value, employmentDetailId);
 		}
