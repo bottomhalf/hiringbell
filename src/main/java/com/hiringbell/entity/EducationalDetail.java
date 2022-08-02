@@ -23,26 +23,47 @@ public class EducationalDetail {
 	@Column(name = "EducationalDetailId")
 	long educationalDetailId;
 	
-	@Column(name = "DegreeName")
-	String degreeName;
+	@Column(name = "Education")
+	int education;
 	
-	@Column(name = "PassoutYear")
-	String passoutYear;
+	@Column(name = "Board")
+	int board;
 	
-	@Column(name = "Specialization")
-	String specialization;
+	@Column(name = "SchoolMedium")
+	int schoolMedium;
 	
-	@Column(name = "UniversityName")
-	String universityName;
+	@Column(name = "TotalMarks")
+	Double totalMarks;
 	
-	@Column(name = "CourseType")
-	String courseType;
+	@Column(name = "EnglishMarks")
+	Double englishMarks;
 	
-	@Column(name = "GradingSystem")
-	String gradingSystem;
+	@Column(name = "MathsMarks")
+	Double mathsMarks;
 	
 	@Column(name = "Course")
-	String course;
+	int course;
+	
+	@Column(name = "OtherCourse")
+	String otherCourse;
+	
+	@Column(name = "Specialization")
+	int specialization;
+	
+	@Column(name = "OtherSpecialization")
+	String otherSpecialization;
+	
+	@Column(name = "UniversityInstitute")
+	String universityInstitute;
+	
+	@Column(name = "CourseType")
+	int courseType;
+	
+	@Column(name = "PassingOutYear")
+	int passingOutYear;
+	
+	@Column(name = "GradingSystem")
+	int gradingSystem;
 	
 	@Transient
 	Long AdminId;
@@ -61,10 +82,13 @@ public class EducationalDetail {
 
 	@Override
 	public String toString() {
-		return "EducationalDetail [educationalDetailId=" + educationalDetailId + ", degreeName=" + degreeName
-				+ ", passoutYear=" + passoutYear + ", specialization=" + specialization + ", universityName="
-				+ universityName + ", courseType=" + courseType + ", gradingSystem=" + gradingSystem + ", course="
-				+ course + ", AdminId=" + AdminId + "]";
+		return "EducationalDetail [educationalDetailId=" + educationalDetailId + ", education=" + education + ", board="
+				+ board + ", schoolMedium=" + schoolMedium + ", totalMarks=" + totalMarks + ", englishMarks="
+				+ englishMarks + ", mathsMarks=" + mathsMarks + ", course=" + course + ", otherCourse=" + otherCourse
+				+ ", specialization=" + specialization + ", otherSpecialization=" + otherSpecialization
+				+ ", universityInstitute=" + universityInstitute + ", courseType=" + courseType + ", passingOutYear="
+				+ passingOutYear + ", gradingSystem=" + gradingSystem + ", AdminId=" + AdminId + ", createdBy="
+				+ createdBy + ", updatedBy=" + updatedBy + "]";
 	}
 
 	public long getEducationalDetailId() {
@@ -75,60 +99,116 @@ public class EducationalDetail {
 		this.educationalDetailId = educationalDetailId;
 	}
 
-	public String getDegreeName() {
-		return degreeName;
+	public int getEducation() {
+		return education;
 	}
 
-	public void setDegreeName(String degreeName) {
-		this.degreeName = degreeName;
+	public void setEducation(int education) {
+		this.education = education;
 	}
 
-	public String getPassoutYear() {
-		return passoutYear;
+	public int getBoard() {
+		return board;
 	}
 
-	public void setPassoutYear(String passoutYear) {
-		this.passoutYear = passoutYear;
+	public void setBoard(int board) {
+		this.board = board;
 	}
 
-	public String getSpecialization() {
-		return specialization;
+	public int getSchoolMedium() {
+		return schoolMedium;
 	}
 
-	public void setSpecialization(String specialization) {
-		this.specialization = specialization;
+	public void setSchoolMedium(int schoolMedium) {
+		this.schoolMedium = schoolMedium;
 	}
 
-	public String getUniversityName() {
-		return universityName;
+	public Double getTotalMarks() {
+		return totalMarks;
 	}
 
-	public void setUniversityName(String universityName) {
-		this.universityName = universityName;
+	public void setTotalMarks(Double totalMarks) {
+		this.totalMarks = totalMarks;
 	}
 
-	public String getCourseType() {
-		return courseType;
+	public Double getEnglishMarks() {
+		return englishMarks;
 	}
 
-	public void setCourseType(String courseType) {
-		this.courseType = courseType;
+	public void setEnglishMarks(Double englishMarks) {
+		this.englishMarks = englishMarks;
 	}
 
-	public String getGradingSystem() {
-		return gradingSystem;
+	public Double getMathsMarks() {
+		return mathsMarks;
 	}
 
-	public void setGradingSystem(String gradingSystem) {
-		this.gradingSystem = gradingSystem;
+	public void setMathsMarks(Double mathsMarks) {
+		this.mathsMarks = mathsMarks;
 	}
 
-	public String getCourse() {
+	public int getCourse() {
 		return course;
 	}
 
-	public void setCourse(String course) {
+	public void setCourse(int course) {
 		this.course = course;
+	}
+
+	public String getOtherCourse() {
+		return otherCourse;
+	}
+
+	public void setOtherCourse(String otherCourse) {
+		this.otherCourse = otherCourse;
+	}
+
+	public int getSpecialization() {
+		return specialization;
+	}
+
+	public void setSpecialization(int specialization) {
+		this.specialization = specialization;
+	}
+
+	public String getOtherSpecialization() {
+		return otherSpecialization;
+	}
+
+	public void setOtherSpecialization(String otherSpecialization) {
+		this.otherSpecialization = otherSpecialization;
+	}
+
+	public String getUniversityInstitute() {
+		return universityInstitute;
+	}
+
+	public void setUniversityInstitute(String universityInstitute) {
+		this.universityInstitute = universityInstitute;
+	}
+
+	public int getCourseType() {
+		return courseType;
+	}
+
+	public void setCourseType(int courseType) {
+		this.courseType = courseType;
+	}
+
+	public int getPassingOutYear() {
+		return passingOutYear;
+	}
+
+	public void setPassingOutYear(int passingOutYear) {
+		this.passingOutYear = passingOutYear;
+	}
+
+	public int getGradingSystem() {
+		return gradingSystem;
+	}
+
+	public void setGradingSystem(int gradingSystem) {
+		this.gradingSystem = gradingSystem;
 	}
 
 	public Long getAdminId() {
@@ -155,23 +235,34 @@ public class EducationalDetail {
 		this.updatedBy = updatedBy;
 	}
 
-	public EducationalDetail(long educationalDetailId, String degreeName, String passoutYear, String specialization,
-			String universityName, String courseType, String gradingSystem, String course, Long adminId) {
+	public EducationalDetail(long educationalDetailId, int education, int board, int schoolMedium, Double totalMarks,
+			Double englishMarks, Double mathsMarks, int course, String otherCourse, int specialization,
+			String otherSpecialization, String universityInstitute, int courseType, int passingOutYear,
+			int gradingSystem, Long adminId, Long createdBy, Long updatedBy) {
 		super();
 		this.educationalDetailId = educationalDetailId;
-		this.degreeName = degreeName;
-		this.passoutYear = passoutYear;
-		this.specialization = specialization;
-		this.universityName = universityName;
-		this.courseType = courseType;
-		this.gradingSystem = gradingSystem;
+		this.education = education;
+		this.board = board;
+		this.schoolMedium = schoolMedium;
+		this.totalMarks = totalMarks;
+		this.englishMarks = englishMarks;
+		this.mathsMarks = mathsMarks;
 		this.course = course;
+		this.otherCourse = otherCourse;
+		this.specialization = specialization;
+		this.otherSpecialization = otherSpecialization;
+		this.universityInstitute = universityInstitute;
+		this.courseType = courseType;
+		this.passingOutYear = passingOutYear;
+		this.gradingSystem = gradingSystem;
 		AdminId = adminId;
+		this.createdBy = createdBy;
+		this.updatedBy = updatedBy;
 	}
 
 	public EducationalDetail() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

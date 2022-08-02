@@ -27,13 +27,21 @@ public class EducationalDetailService {
 		var result = "";
 		EducationalDetail value = this.educationalDetailRepository.getByIdEducationalDetailRepo(educationalDetailId);
 		if(value != null) {
-			value.setDegreeName(educationalDetail.getDegreeName());
-			value.setPassoutYear(educationalDetail.getPassoutYear());
-			value.setSpecialization(educationalDetail.getSpecialization());
-			value.setUniversityName(educationalDetail.getUniversityName());
-			value.setCourseType(educationalDetail.getCourseType());
-			value.setGradingSystem(educationalDetail.getGradingSystem());
+			
+			value.setEducation(educationalDetail.getEducation());
+			value.setBoard(educationalDetail.getBoard());
+			value.setSchoolMedium(educationalDetail.getSchoolMedium());
+			value.setTotalMarks(educationalDetail.getTotalMarks());
+			value.setEnglishMarks(educationalDetail.getEnglishMarks());
+			value.setMathsMarks(educationalDetail.getMathsMarks());
 			value.setCourse(educationalDetail.getCourse());
+			value.setOtherCourse(educationalDetail.getOtherCourse());
+			value.setSpecialization(educationalDetail.getSpecialization());
+			value.setOtherSpecialization(educationalDetail.getOtherSpecialization());
+			value.setUniversityInstitute(educationalDetail.getUniversityInstitute());
+			value.setCourseType(educationalDetail.getCourseType());
+			value.setPassingOutYear(educationalDetail.getPassingOutYear());
+			value.setGradingSystem(educationalDetail.getGradingSystem());
 			value.setAdminId(educationalDetail.getAdminId());
 			result = this.educationalDetailRepository.updateEducationalDetailRepo(value, educationalDetailId);
 		}
