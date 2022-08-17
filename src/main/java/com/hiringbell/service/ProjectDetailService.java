@@ -22,27 +22,29 @@ public class ProjectDetailService {
 		return result;
 	}
 
-	public String updateProjectDetailService(ProjectDetail projectDetail, long projectDetailId) throws Exception {
+	public String updateProjectDetailService(ProjectDetail projectDetail, long userId) throws Exception {
 		var result = "";
-		ProjectDetail value = this.projectDetailRepository.getByIdProjectDetailRepo(projectDetailId);
+		ProjectDetail value = this.projectDetailRepository.getByUserIdProjectDetailRepo(userId);
 		if(value!=null)
 		{
+			value.setProjectDetailId(projectDetail.getProjectDetailId());
 			value.setProjectTitle(projectDetail.getProjectTitle());
-			value.setProjectTitle(projectDetail.getProjectTitle());
-			value.setProjectTag(projectDetail.getProjectTag());
-			value.setProjectWorkingYear(projectDetail.getProjectWorkingYear());
-			value.setProjectWorkingMonth(projectDetail.getProjectWorkingMonth());
-			value.setProjectWorkedYear(projectDetail.getProjectWorkedYear());
-			value.setProjectWorkedMonth(projectDetail.getProjectWorkedMonth());
+			value.setClient(projectDetail.getProjectTitle());
 			value.setProjectStatus(projectDetail.getProjectStatus());
-			value.setClientName(projectDetail.getClientName());
-			value.setProjectDetails(projectDetail.getProjectDetails());
-			value.setRolesResponsibility(projectDetail.getRolesResponsibility());
-			value.setTechnalogyStack(projectDetail.getTechnalogyStack());
-			value.setProjectDuration(projectDetail.getProjectDuration());
-			value.setProjectIndex(projectDetail.getProjectIndex());
+			value.setWorkedFromYears(projectDetail.getWorkedFromYears());
+			value.setWorkedFromMonth(projectDetail.getWorkedFromMonth());
+			value.setWorkedTillYears(projectDetail.getWorkedTillYears());
+			value.setWorkedTillMonth(projectDetail.getWorkedTillMonth());
+			value.setDetailsOfProject(projectDetail.getDetailsOfProject());
+			value.setProjectLocation(projectDetail.getProjectLocation());
+			value.setProjectSite(projectDetail.getProjectSite());
+			value.setNatureOfEmployment(projectDetail.getNatureOfEmployment());
+			value.setTeamSize(projectDetail.getTeamSize());
+			value.setRole(projectDetail.getRole());
+			value.setRoleDescription(projectDetail.getRoleDescription());
+			value.setSkillsUsed(projectDetail.getSkillsUsed());
 			value.setAdminId(projectDetail.getAdminId());
-			result = this.projectDetailRepository.updateProjectDetailRepo(value, projectDetailId);
+			result = this.projectDetailRepository.updateProjectDetailRepo(value, userId);
 		}
 		else {
 			throw new Exception("Exception message");
@@ -55,8 +57,8 @@ public class ProjectDetailService {
 		return result;
 	}
 
-	public ProjectDetail getByIdProjectDetailService(long projectDetailId) {
-		var result = this.projectDetailRepository.getByIdProjectDetailRepo(projectDetailId);
+	public ProjectDetail getByUserIdProjectDetailService(long userId) {
+		var result = this.projectDetailRepository.getByUserIdProjectDetailRepo(userId);
 		return result;
 	}
 	

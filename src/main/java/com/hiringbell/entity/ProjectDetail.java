@@ -21,47 +21,55 @@ public class ProjectDetail {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name = "ProjectDetailId")
-		long projectDetailId;
+		long ProjectDetailId;
+		
+		@Column(name = "UserId")
+		Long userId;
 	
 		@Column(name = "ProjectTitle")
 		String projectTitle;
 		
-		@Column(name = "ProjectTag")
-		String projectTag;
-		
-		@Column(name = "ProjectWorkingYear")
-		int projectWorkingYear;
-		
-		@Column(name = "ProjectWorkingMonth")
-		int projectWorkingMonth;
-		
-		@Column(name = "ProjectWorkedYear")
-		int projectWorkedYear;
-		
-		@Column(name = "ProjectWorkedMonth")
-		int projectWorkedMonth;
+		@Column(name = "Client")
+		String client;
 		
 		@Column(name = "ProjectStatus")
-		String projectStatus;
+		boolean projectStatus;
 		
-		@Column(name = "ClientName")
-		String clientName;
+		@Column(name = "WorkedFromYears")
+		int workedFromYears;
 		
-		@Column(name = "ProjectDetails")
-		String projectDetails;
+		@Column(name = "WorkedFromMonth")
+		String workedFromMonth;
 		
-		@Column(name = "RolesResponsibility")
-		String rolesResponsibility;
+		@Column(name = "WorkedTillYears")
+		int workedTillYears;
 		
-		@Column(name = "TechnalogyStack")
-		String technalogyStack;
+		@Column(name = "WorkedTillMonth")
+		String workedTillMonth;
 		
+		@Column(name = "DetailsOfProject")
+		String detailsOfProject;
 		
-		@Column(name = "ProjectDuration")
-		String projectDuration;
+		@Column(name = "ProjectLocation")
+		String projectLocation;
 		
-		@Column(name = "ProjectIndex")
-		int projectIndex;
+		@Column(name = "ProjectSite")
+		boolean projectSite;
+		
+		@Column(name = "NatureOfEmployment")
+		String natureOfEmployment;
+		
+		@Column(name = "TeamSize")
+		int teamSize;
+		
+		@Column(name = "Role")
+		String role;
+		
+		@Column(name = "RoleDescription")
+		String roleDescription;
+		
+		@Column(name = "SkillsUsed")
+		String skillsUsed;
 		
 		@Transient
 		Long AdminId;
@@ -80,21 +88,30 @@ public class ProjectDetail {
 
 		@Override
 		public String toString() {
-			return "ProjectDetail [projectDetailId=" + projectDetailId + ", projectTitle=" + projectTitle
-					+ ", projectTag=" + projectTag + ", projectWorkingYear=" + projectWorkingYear
-					+ ", projectWorkingMonth=" + projectWorkingMonth + ", projectWorkedYear=" + projectWorkedYear
-					+ ", projectWorkedMonth=" + projectWorkedMonth + ", projectStatus=" + projectStatus
-					+ ", clientName=" + clientName + ", projectDetails=" + projectDetails + ", rolesResponsibility="
-					+ rolesResponsibility + ", technalogyStack=" + technalogyStack + ", projectDuration="
-					+ projectDuration + ", projectIndex=" + projectIndex + ", AdminId=" + AdminId + "]";
+			return "ProjectDetail [ProjectDetailId=" + ProjectDetailId + ", userId=" + userId + ", projectTitle="
+					+ projectTitle + ", client=" + client + ", projectStatus=" + projectStatus + ", workedFromYears="
+					+ workedFromYears + ", workedFromMonth=" + workedFromMonth + ", workedTillYears=" + workedTillYears
+					+ ", workedTillMonth=" + workedTillMonth + ", detailsOfProject=" + detailsOfProject
+					+ ", projectLocation=" + projectLocation + ", projectSite=" + projectSite + ", natureOfEmployment="
+					+ natureOfEmployment + ", teamSize=" + teamSize + ", role=" + role + ", roleDescription="
+					+ roleDescription + ", skillsUsed=" + skillsUsed + ", AdminId=" + AdminId + ", createdBy="
+					+ createdBy + ", updatedBy=" + updatedBy + "]";
 		}
 
 		public long getProjectDetailId() {
-			return projectDetailId;
+			return ProjectDetailId;
 		}
 
 		public void setProjectDetailId(long projectDetailId) {
-			this.projectDetailId = projectDetailId;
+			ProjectDetailId = projectDetailId;
+		}
+
+		public Long getUserId() {
+			return userId;
+		}
+
+		public void setUserId(Long userId) {
+			this.userId = userId;
 		}
 
 		public String getProjectTitle() {
@@ -105,100 +122,116 @@ public class ProjectDetail {
 			this.projectTitle = projectTitle;
 		}
 
-		public String getProjectTag() {
-			return projectTag;
+		public String getClient() {
+			return client;
 		}
 
-		public void setProjectTag(String projectTag) {
-			this.projectTag = projectTag;
+		public void setClient(String client) {
+			this.client = client;
 		}
 
-		public int getProjectWorkingYear() {
-			return projectWorkingYear;
-		}
-
-		public void setProjectWorkingYear(int projectWorkingYear) {
-			this.projectWorkingYear = projectWorkingYear;
-		}
-
-		public int getProjectWorkingMonth() {
-			return projectWorkingMonth;
-		}
-
-		public void setProjectWorkingMonth(int projectWorkingMonth) {
-			this.projectWorkingMonth = projectWorkingMonth;
-		}
-
-		public int getProjectWorkedYear() {
-			return projectWorkedYear;
-		}
-
-		public void setProjectWorkedYear(int projectWorkedYear) {
-			this.projectWorkedYear = projectWorkedYear;
-		}
-
-		public int getProjectWorkedMonth() {
-			return projectWorkedMonth;
-		}
-
-		public void setProjectWorkedMonth(int projectWorkedMonth) {
-			this.projectWorkedMonth = projectWorkedMonth;
-		}
-
-		public String getProjectStatus() {
+		public boolean getProjectStatus() {
 			return projectStatus;
 		}
 
-		public void setProjectStatus(String projectStatus) {
+		public void setProjectStatus(boolean projectStatus) {
 			this.projectStatus = projectStatus;
 		}
 
-		public String getClientName() {
-			return clientName;
+		public int getWorkedFromYears() {
+			return workedFromYears;
 		}
 
-		public void setClientName(String clientName) {
-			this.clientName = clientName;
+		public void setWorkedFromYears(int workedFromYears) {
+			this.workedFromYears = workedFromYears;
 		}
 
-		public String getProjectDetails() {
-			return projectDetails;
+		public String getWorkedFromMonth() {
+			return workedFromMonth;
 		}
 
-		public void setProjectDetails(String projectDetails) {
-			this.projectDetails = projectDetails;
+		public void setWorkedFromMonth(String workedFromMonth) {
+			this.workedFromMonth = workedFromMonth;
 		}
 
-		public String getRolesResponsibility() {
-			return rolesResponsibility;
+		public int getWorkedTillYears() {
+			return workedTillYears;
 		}
 
-		public void setRolesResponsibility(String rolesResponsibility) {
-			this.rolesResponsibility = rolesResponsibility;
+		public void setWorkedTillYears(int workedTillYears) {
+			this.workedTillYears = workedTillYears;
 		}
 
-		public String getTechnalogyStack() {
-			return technalogyStack;
+		public String getWorkedTillMonth() {
+			return workedTillMonth;
 		}
 
-		public void setTechnalogyStack(String technalogyStack) {
-			this.technalogyStack = technalogyStack;
+		public void setWorkedTillMonth(String workedTillMonth) {
+			this.workedTillMonth = workedTillMonth;
 		}
 
-		public String getProjectDuration() {
-			return projectDuration;
+		public String getDetailsOfProject() {
+			return detailsOfProject;
 		}
 
-		public void setProjectDuration(String projectDuration) {
-			this.projectDuration = projectDuration;
+		public void setDetailsOfProject(String detailsOfProject) {
+			this.detailsOfProject = detailsOfProject;
 		}
 
-		public int getProjectIndex() {
-			return projectIndex;
+		public String getProjectLocation() {
+			return projectLocation;
 		}
 
-		public void setProjectIndex(int projectIndex) {
-			this.projectIndex = projectIndex;
+		public void setProjectLocation(String projectLocation) {
+			this.projectLocation = projectLocation;
+		}
+
+		public boolean getProjectSite() {
+			return projectSite;
+		}
+
+		public void setProjectSite(boolean projectSite) {
+			this.projectSite = projectSite;
+		}
+
+		public String getNatureOfEmployment() {
+			return natureOfEmployment;
+		}
+
+		public void setNatureOfEmployment(String natureOfEmployment) {
+			this.natureOfEmployment = natureOfEmployment;
+		}
+
+		public int getTeamSize() {
+			return teamSize;
+		}
+
+		public void setTeamSize(int teamSize) {
+			this.teamSize = teamSize;
+		}
+
+		public String getRole() {
+			return role;
+		}
+
+		public void setRole(String role) {
+			this.role = role;
+		}
+
+		public String getRoleDescription() {
+			return roleDescription;
+		}
+
+		public void setRoleDescription(String roleDescription) {
+			this.roleDescription = roleDescription;
+		}
+
+		public String getSkillsUsed() {
+			return skillsUsed;
+		}
+
+		public void setSkillsUsed(String skillsUsed) {
+			this.skillsUsed = skillsUsed;
 		}
 
 		public Long getAdminId() {
@@ -208,7 +241,7 @@ public class ProjectDetail {
 		public void setAdminId(Long adminId) {
 			AdminId = adminId;
 		}
-	
+
 		public Long getCreatedBy() {
 			return createdBy;
 		}
@@ -225,30 +258,40 @@ public class ProjectDetail {
 			this.updatedBy = updatedBy;
 		}
 
-		public ProjectDetail(long projectDetailId, String projectTitle, String projectTag, int projectWorkingYear,
-				int projectWorkingMonth, int projectWorkedYear, int projectWorkedMonth, String projectStatus,
-				String clientName, String projectDetails, String rolesResponsibility, String technalogyStack,
-				String projectDuration, int projectIndex, Long adminId) {
+		public ProjectDetail(long projectDetailId, Long userId, String projectTitle, String client,
+				boolean projectStatus, int workedFromYears, String workedFromMonth, int workedTillYears,
+				String workedTillMonth, String detailsOfProject, String projectLocation, boolean projectSite,
+				String natureOfEmployment, int teamSize, String role, String roleDescription, String skillsUsed,
+				Long adminId, Long createdBy, Long updatedBy) {
 			super();
-			this.projectDetailId = projectDetailId;
+			ProjectDetailId = projectDetailId;
+			this.userId = userId;
 			this.projectTitle = projectTitle;
-			this.projectTag = projectTag;
-			this.projectWorkingYear = projectWorkingYear;
-			this.projectWorkingMonth = projectWorkingMonth;
-			this.projectWorkedYear = projectWorkedYear;
-			this.projectWorkedMonth = projectWorkedMonth;
+			this.client = client;
 			this.projectStatus = projectStatus;
-			this.clientName = clientName;
-			this.projectDetails = projectDetails;
-			this.rolesResponsibility = rolesResponsibility;
-			this.technalogyStack = technalogyStack;
-			this.projectDuration = projectDuration;
-			this.projectIndex = projectIndex;
+			this.workedFromYears = workedFromYears;
+			this.workedFromMonth = workedFromMonth;
+			this.workedTillYears = workedTillYears;
+			this.workedTillMonth = workedTillMonth;
+			this.detailsOfProject = detailsOfProject;
+			this.projectLocation = projectLocation;
+			this.projectSite = projectSite;
+			this.natureOfEmployment = natureOfEmployment;
+			this.teamSize = teamSize;
+			this.role = role;
+			this.roleDescription = roleDescription;
+			this.skillsUsed = skillsUsed;
 			AdminId = adminId;
+			this.createdBy = createdBy;
+			this.updatedBy = updatedBy;
 		}
 
 		public ProjectDetail() {
 			super();
 			// TODO Auto-generated constructor stub
-		}	
+		}
+
+		
+		
+		
 }
