@@ -122,16 +122,17 @@ public class EmploymentDetailRepository {
 		return (ArrayList<EmploymentDetail>)result;
 	}
 	
-	public EmploymentDetail getByIdEmploymentDetailRepo(long employmentDetailId) {
-		EmploymentDetail result = null;
+	public ArrayList<EmploymentDetail> getByUserIdEmploymentDetailRepo(long userId) {
+		java.util.List<EmploymentDetail> result = null;
 		Transaction tx = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		System.out.println(factory);
 		try(Session session = factory.openSession()) {
 			tx = session.beginTransaction();
-			Query<EmploymentDetail> query = session.createSQLQuery("Call sp_EmploymentDetail_getByEmploymentDetailId(:employmentDetailId)").addEntity(EmploymentDetail.class);	
-			query.setParameter("employmentDetailId", employmentDetailId);
-			result = query.getSingleResult();
+			Query<EmploymentDetail> query = session.createSQLQuery("Call sp_EmploymentDetail_getByUserId(:userId)").addEntity(EmploymentDetail.class);	
+			query.setParameter("userId", userId);
+			//result = query.getSingleResult();
+			result = query.list();
 			tx.commit();
 			session.close();
 		} catch (Exception e) {
@@ -141,7 +142,7 @@ public class EmploymentDetailRepository {
 				tx.rollback();
 			}
 		}
-		return result;
+		return (ArrayList<EmploymentDetail>)result;
 	}
 
 	

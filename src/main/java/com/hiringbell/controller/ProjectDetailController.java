@@ -29,9 +29,9 @@ public class ProjectDetailController extends BaseController {
 		return BuildOk(result);
 	}
 	
-	@PutMapping("/updateProjectDetail/{userId}")
-	public ResponseModal updateProjectDetail(@RequestBody ProjectDetail projectDetail, @PathVariable("userId") long userId) throws Exception {
-		var result = this.projectDetailService.updateProjectDetailService(projectDetail, userId);
+	@PutMapping("/updateProjectDetail/{projectDetailId}")
+	public ResponseModal updateProjectDetail(@RequestBody ProjectDetail projectDetail, @PathVariable("projectDetailId") long projectDetailId) throws Exception {
+		var result = this.projectDetailService.updateProjectDetailService(projectDetail, projectDetailId);
 		return BuildOk(result);
 	}
 	

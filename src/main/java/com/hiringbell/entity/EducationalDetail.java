@@ -23,6 +23,9 @@ public class EducationalDetail {
 	@Column(name = "EducationalDetailId")
 	long educationalDetailId;
 	
+	@Column(name = "UserId")
+	long userId;
+	
 	@Column(name = "Education")
 	int education;
 	

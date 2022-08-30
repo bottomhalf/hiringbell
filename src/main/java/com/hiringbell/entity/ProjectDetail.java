@@ -21,7 +21,7 @@ public class ProjectDetail {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name = "ProjectDetailId")
-		long ProjectDetailId;
+		long projectDetailId;
 		
 		@Column(name = "UserId")
 		Long userId;
@@ -88,7 +88,7 @@ public class ProjectDetail {
 
 		@Override
 		public String toString() {
-			return "ProjectDetail [ProjectDetailId=" + ProjectDetailId + ", userId=" + userId + ", projectTitle="
+			return "ProjectDetail [projectDetailId=" + projectDetailId + ", userId=" + userId + ", projectTitle="
 					+ projectTitle + ", client=" + client + ", projectStatus=" + projectStatus + ", workedFromYears="
 					+ workedFromYears + ", workedFromMonth=" + workedFromMonth + ", workedTillYears=" + workedTillYears
 					+ ", workedTillMonth=" + workedTillMonth + ", detailsOfProject=" + detailsOfProject
@@ -99,11 +99,11 @@ public class ProjectDetail {
 		}
 
 		public long getProjectDetailId() {
-			return ProjectDetailId;
+			return projectDetailId;
 		}
 
 		public void setProjectDetailId(long projectDetailId) {
-			ProjectDetailId = projectDetailId;
+			this.projectDetailId = projectDetailId;
 		}
 
 		public Long getUserId() {
@@ -264,7 +264,7 @@ public class ProjectDetail {
 				String natureOfEmployment, int teamSize, String role, String roleDescription, String skillsUsed,
 				Long adminId, Long createdBy, Long updatedBy) {
 			super();
-			ProjectDetailId = projectDetailId;
+			this.projectDetailId = projectDetailId;
 			this.userId = userId;
 			this.projectTitle = projectTitle;
 			this.client = client;
@@ -290,8 +290,5 @@ public class ProjectDetail {
 			super();
 			// TODO Auto-generated constructor stub
 		}
-
-		
-		
 		
 }

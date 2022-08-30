@@ -63,7 +63,7 @@ public class ProjectDetailRepository {
 		return "Data added successsfully in ProjectDetail";
 	}
 
-	public String updateProjectDetailRepo(ProjectDetail projectDetail, long userId) {
+	public String updateProjectDetailRepo(ProjectDetail projectDetail, long projectDetailId) {
 		int rowCount = 0;
 		Transaction tx = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -129,8 +129,8 @@ public class ProjectDetailRepository {
 		return (ArrayList<ProjectDetail>) result;
 	}
 	
-	public ProjectDetail getByUserIdProjectDetailRepo(long userId) {
-		ProjectDetail result = null;
+	public ArrayList<ProjectDetail> getByUserIdProjectDetailRepo(long userId) {
+		java.util.List<ProjectDetail> result = null;
 		Transaction tx = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		System.out.println(factory);
@@ -138,7 +138,8 @@ public class ProjectDetailRepository {
 			tx = session.beginTransaction();
 			Query<ProjectDetail> query = session.createSQLQuery("Call sp_ProjectDetail_getByUserId(:userId)").addEntity(ProjectDetail.class);	
 			query.setParameter("userId", userId);
-			result = query.getSingleResult();
+			//result = query.getSingleResult();
+			result = query.list();
 			tx.commit();
 			session.close();
 		} catch (Exception e) {
@@ -148,7 +149,7 @@ public class ProjectDetailRepository {
 				tx.rollback();
 			}
 		}
-		return result;
+		return (ArrayList<ProjectDetail>) result;
 	}
 	
 	public String deleteByIdProjectDetailRepo(long projectDetailId) {

@@ -1,5 +1,6 @@
 package com.hiringbell.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +8,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.hiringbell.entity.ProjectDetail;
+import com.hiringbell.interfaces.IProjectDetailService;
 import com.hiringbell.repository.ProjectDetailRepository;
 
 
 @Service
 @Component
-public class ProjectDetailService {
+public class ProjectDetailService implements IProjectDetailService {
 	
 	@Autowired
 	ProjectDetailRepository projectDetailRepository;
@@ -22,33 +24,15 @@ public class ProjectDetailService {
 		return result;
 	}
 
-	public String updateProjectDetailService(ProjectDetail projectDetail, long userId) throws Exception {
+	public String updateProjectDetailService(ProjectDetail projectDetail, long projectDetailId) throws Exception {
 		var result = "";
-		ProjectDetail value = this.projectDetailRepository.getByUserIdProjectDetailRepo(userId);
-		if(value!=null)
+		if(projectDetailId > 0)
 		{
-			value.setProjectDetailId(projectDetail.getProjectDetailId());
-			value.setProjectTitle(projectDetail.getProjectTitle());
-			value.setClient(projectDetail.getProjectTitle());
-			value.setProjectStatus(projectDetail.getProjectStatus());
-			value.setWorkedFromYears(projectDetail.getWorkedFromYears());
-			value.setWorkedFromMonth(projectDetail.getWorkedFromMonth());
-			value.setWorkedTillYears(projectDetail.getWorkedTillYears());
-			value.setWorkedTillMonth(projectDetail.getWorkedTillMonth());
-			value.setDetailsOfProject(projectDetail.getDetailsOfProject());
-			value.setProjectLocation(projectDetail.getProjectLocation());
-			value.setProjectSite(projectDetail.getProjectSite());
-			value.setNatureOfEmployment(projectDetail.getNatureOfEmployment());
-			value.setTeamSize(projectDetail.getTeamSize());
-			value.setRole(projectDetail.getRole());
-			value.setRoleDescription(projectDetail.getRoleDescription());
-			value.setSkillsUsed(projectDetail.getSkillsUsed());
-			value.setAdminId(projectDetail.getAdminId());
-			result = this.projectDetailRepository.updateProjectDetailRepo(value, userId);
+			result = this.projectDetailRepository.updateProjectDetailRepo(projectDetail, projectDetailId);
+			if (result == null || result == "")
+				throw new IOException("Unable to update");
 		}
-		else {
-			throw new Exception("Exception message");
-		}
+		
 		return result;
 	}
 	
@@ -57,7 +41,7 @@ public class ProjectDetailService {
 		return result;
 	}
 
-	public ProjectDetail getByUserIdProjectDetailService(long userId) {
+	public ArrayList<ProjectDetail> getByUserIdProjectDetailService(long userId) {
 		var result = this.projectDetailRepository.getByUserIdProjectDetailRepo(userId);
 		return result;
 	}
