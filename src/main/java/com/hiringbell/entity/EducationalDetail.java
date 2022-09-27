@@ -33,10 +33,10 @@ public class EducationalDetail {
 	int board;
 	
 	@Column(name = "SchoolMedium")
-	int schoolMedium;
+	String schoolMedium;
 	
 	@Column(name = "TotalMarks")
-	Double totalMarks;
+	String totalMarks;
 	
 	@Column(name = "EnglishMarks")
 	Double englishMarks;
@@ -66,7 +66,7 @@ public class EducationalDetail {
 	int passingOutYear;
 	
 	@Column(name = "GradingSystem")
-	int gradingSystem;
+	String gradingSystem;
 	
 	@Transient
 	Long AdminId;
@@ -85,13 +85,13 @@ public class EducationalDetail {
 
 	@Override
 	public String toString() {
-		return "EducationalDetail [educationalDetailId=" + educationalDetailId + ", education=" + education + ", board="
-				+ board + ", schoolMedium=" + schoolMedium + ", totalMarks=" + totalMarks + ", englishMarks="
-				+ englishMarks + ", mathsMarks=" + mathsMarks + ", course=" + course + ", otherCourse=" + otherCourse
-				+ ", specialization=" + specialization + ", otherSpecialization=" + otherSpecialization
-				+ ", universityInstitute=" + universityInstitute + ", courseType=" + courseType + ", passingOutYear="
-				+ passingOutYear + ", gradingSystem=" + gradingSystem + ", AdminId=" + AdminId + ", createdBy="
-				+ createdBy + ", updatedBy=" + updatedBy + "]";
+		return "EducationalDetail [educationalDetailId=" + educationalDetailId + ", userId=" + userId + ", education="
+				+ education + ", board=" + board + ", schoolMedium=" + schoolMedium + ", totalMarks=" + totalMarks
+				+ ", englishMarks=" + englishMarks + ", mathsMarks=" + mathsMarks + ", course=" + course
+				+ ", otherCourse=" + otherCourse + ", specialization=" + specialization + ", otherSpecialization="
+				+ otherSpecialization + ", universityInstitute=" + universityInstitute + ", courseType=" + courseType
+				+ ", passingOutYear=" + passingOutYear + ", gradingSystem=" + gradingSystem + ", AdminId=" + AdminId
+				+ ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + "]";
 	}
 
 	public long getEducationalDetailId() {
@@ -100,6 +100,14 @@ public class EducationalDetail {
 
 	public void setEducationalDetailId(long educationalDetailId) {
 		this.educationalDetailId = educationalDetailId;
+	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	public int getEducation() {
@@ -118,19 +126,19 @@ public class EducationalDetail {
 		this.board = board;
 	}
 
-	public int getSchoolMedium() {
+	public String getSchoolMedium() {
 		return schoolMedium;
 	}
 
-	public void setSchoolMedium(int schoolMedium) {
+	public void setSchoolMedium(String schoolMedium) {
 		this.schoolMedium = schoolMedium;
 	}
 
-	public Double getTotalMarks() {
+	public String getTotalMarks() {
 		return totalMarks;
 	}
 
-	public void setTotalMarks(Double totalMarks) {
+	public void setTotalMarks(String totalMarks) {
 		this.totalMarks = totalMarks;
 	}
 
@@ -206,11 +214,11 @@ public class EducationalDetail {
 		this.passingOutYear = passingOutYear;
 	}
 
-	public int getGradingSystem() {
+	public String getGradingSystem() {
 		return gradingSystem;
 	}
 
-	public void setGradingSystem(int gradingSystem) {
+	public void setGradingSystem(String gradingSystem) {
 		this.gradingSystem = gradingSystem;
 	}
 
@@ -238,12 +246,13 @@ public class EducationalDetail {
 		this.updatedBy = updatedBy;
 	}
 
-	public EducationalDetail(long educationalDetailId, int education, int board, int schoolMedium, Double totalMarks,
-			Double englishMarks, Double mathsMarks, int course, String otherCourse, int specialization,
-			String otherSpecialization, String universityInstitute, int courseType, int passingOutYear,
-			int gradingSystem, Long adminId, Long createdBy, Long updatedBy) {
+	public EducationalDetail(long educationalDetailId, long userId, int education, int board, String schoolMedium,
+			String totalMarks, Double englishMarks, Double mathsMarks, int course, String otherCourse,
+			int specialization, String otherSpecialization, String universityInstitute, int courseType,
+			int passingOutYear, String gradingSystem, Long adminId, Long createdBy, Long updatedBy) {
 		super();
 		this.educationalDetailId = educationalDetailId;
+		this.userId = userId;
 		this.education = education;
 		this.board = board;
 		this.schoolMedium = schoolMedium;
@@ -267,5 +276,5 @@ public class EducationalDetail {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 }

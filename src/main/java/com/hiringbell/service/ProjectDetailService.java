@@ -52,6 +52,4 @@ public class ProjectDetailService implements IProjectDetailService {
 	}
 	
 	
-	
-
 }

@@ -38,9 +38,13 @@
         <mapping class="com.hiringbell.entity.PersonalDetail" />
         <mapping class="com.hiringbell.entity.ProfessionalDetail" />
         <mapping class="com.hiringbell.entity.ProjectDetail" />
-        <mapping class="com.hiringbell.entity.SkillDetail" />
+       
         <mapping class="com.hiringbell.entity.EducationList" />
         <mapping class="com.hiringbell.entity.Board" />
+        <mapping class="com.hiringbell.entity.ItSkills" />
+        <mapping class="com.hiringbell.entity.ProfileSummary" />
+        <mapping class="com.hiringbell.entity.KeySkill" />
+        
         
     </session-factory>
 </hibernate-configuration>

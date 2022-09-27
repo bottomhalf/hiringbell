@@ -40,9 +40,9 @@ public class EducationalDetailController extends BaseController {
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/getById/{educationalDetailId}")
-	public ResponseModal getByIdEducationalDetail(@PathVariable ("educationalDetailId") long educationalDetailId) {
-		var result = this.educationalDetailService.getByIdEducationalDetailService(educationalDetailId);
+	@GetMapping("/getByUserId/{userId}")
+	public ResponseModal getByUserIdEducationalDetail(@PathVariable ("userId") long userId) {
+		var result = this.educationalDetailService.getByUserIdEducationalDetailService(userId);
 		return BuildOk(result);
 	}
 	
