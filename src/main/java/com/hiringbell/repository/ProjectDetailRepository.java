@@ -52,7 +52,6 @@ public class ProjectDetailRepository {
 			tx.commit();
 			session.close();
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e.getMessage());
 			if(tx!=null)
 			{

@@ -33,6 +33,9 @@ public class CommonService {
 	ProfileSummaryService profileSummaryService;
 	
 	@Autowired
+	OnlineProfileService onlineProfileService;
+	
+	@Autowired
 	CommonResultModal commonResultModal;
 	
 
@@ -44,6 +47,7 @@ public class CommonService {
 		commonResultModal.setItSkillsResult(this.itSkillsService.getByUserIdItSkillsService(userId));
 		commonResultModal.setProfileSummaryResult(this.profileSummaryService.getByUserIdProfileSummaryService(userId));
 		commonResultModal.setKeySkillResult(this.keySkillService.getByUserIdKeySkillService(userId));
+		commonResultModal.setOnlineProfileResult(this.onlineProfileService.getByUserIdOnlineProfileService(userId));
 		
 		
 		return commonResultModal;

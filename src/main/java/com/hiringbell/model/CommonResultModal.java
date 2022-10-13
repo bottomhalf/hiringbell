@@ -8,6 +8,7 @@ import com.hiringbell.entity.EducationalDetail;
 import com.hiringbell.entity.EmploymentDetail;
 import com.hiringbell.entity.ItSkills;
 import com.hiringbell.entity.KeySkill;
+import com.hiringbell.entity.OnlineProfile;
 import com.hiringbell.entity.ProfileSummary;
 import com.hiringbell.entity.ProjectDetail;
 
@@ -20,6 +21,7 @@ public class CommonResultModal {
 	ArrayList<ItSkills> itSkillsResult;
 	ArrayList<ProfileSummary> profileSummaryResult;
 	KeySkill keySkillResult;
+	ArrayList<OnlineProfile> onlineProfileResult;
 	
 	public ArrayList<EducationalDetail> getEducationDetailResult() {
 		return educationDetailResult;
@@ -57,11 +59,17 @@ public class CommonResultModal {
 	public void setKeySkillResult(KeySkill keySkillResult) {
 		this.keySkillResult = keySkillResult;
 	}
+	public ArrayList<OnlineProfile> getOnlineProfileResult() {
+		return onlineProfileResult;
+	}
+	public void setOnlineProfileResult(ArrayList<OnlineProfile> onlineProfileResult) {
+		this.onlineProfileResult = onlineProfileResult;
+	}
 	
 	public CommonResultModal(ArrayList<EducationalDetail> educationDetailResult,
 			ArrayList<EmploymentDetail> employmentDetailResult, ArrayList<ProjectDetail> projectDetailResult,
-			ArrayList<ItSkills> itSkillsResult, ArrayList<ProfileSummary> profileSummaryResult,
-			KeySkill keySkillResult) {
+			ArrayList<ItSkills> itSkillsResult, ArrayList<ProfileSummary> profileSummaryResult, KeySkill keySkillResult,
+			ArrayList<OnlineProfile> onlineProfileResult) {
 		super();
 		this.educationDetailResult = educationDetailResult;
 		this.employmentDetailResult = employmentDetailResult;
@@ -69,15 +77,13 @@ public class CommonResultModal {
 		this.itSkillsResult = itSkillsResult;
 		this.profileSummaryResult = profileSummaryResult;
 		this.keySkillResult = keySkillResult;
+		this.onlineProfileResult = onlineProfileResult;
 	}
 	
 	public CommonResultModal() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
 	
 	
 }

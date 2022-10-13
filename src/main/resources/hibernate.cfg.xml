@@ -44,6 +44,8 @@
         <mapping class="com.hiringbell.entity.ItSkills" />
         <mapping class="com.hiringbell.entity.ProfileSummary" />
         <mapping class="com.hiringbell.entity.KeySkill" />
+        <mapping class="com.hiringbell.entity.OnlineProfile" />
+        <mapping class="com.hiringbell.entity.WorkSample" />
         
         
     </session-factory>
