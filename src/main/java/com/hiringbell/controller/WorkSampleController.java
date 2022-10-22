@@ -3,6 +3,7 @@ package com.hiringbell.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,29 +23,36 @@ public class WorkSampleController extends BaseController {
 	@Autowired
 	WorkSampleService workSampleService;
 	
-	@GetMapping("/addWorkSample")
+	@PostMapping("/addWorkSample")
 	public ResponseModal addWorkSample(@RequestBody WorkSample workSample) {
 		var result = this.workSampleService.addWorkSampleService(workSample);
 		return BuildOk(result);
 	}
 	
-	@PostMapping("/updateWorkSample/{workSampleId}")
+	@PutMapping("/updateWorkSample/{workSampleId}")
 	public ResponseModal updateByworkSampleIdWorkSample(@RequestBody WorkSample workSample, @PathVariable("workSampleId") long workSampleId) throws IOException {
 		var result = this.workSampleService.updateByworkSampleIdWorkSampleService(workSample, workSampleId);
 		return BuildOk(result);
 	}
 	
+	@GetMapping("/getAllWorkSample")
 	public ResponseModal getAllWorkSample() {
 		var result = this.workSampleService.getAllWorkSampleService();
 		return BuildOk(result);
 	}
 	
 	
-	@PutMapping("/getByUserId/{userId}")
+	@GetMapping("/getByUserId/{userId}")
 	public ResponseModal getByUserIdWorkSample(@PathVariable("userId") long userId) {
 		var result = this.workSampleService.getByUserIdWorkSampleService(userId);
 		
 		return BuildOk(result);
+	}
+	
+	@DeleteMapping("/deleteByworkSampleId/{workSampleId}")
+	public ResponseModal deleteByworkSampleIdWorkSample(@PathVariable("workSampleId") long workSampleId) {
+		var result = this.workSampleService.deleteByworkSampleIdWorkSampleService(workSampleId);
+		return BuildOk(null);
 	}
 	
 }

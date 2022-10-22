@@ -44,9 +44,11 @@ public class WorkSampleService {
 		var result = this.workSampleRepository.getByUserIdWorkSampleRepository(userId);
 		return result;
 	}
-
-
 	
-	
+	public String deleteByworkSampleIdWorkSampleService(long workSampleId) {
+		var result = this.workSampleRepository.deleteByworkSampleIdWorkSampleRepo(workSampleId);
+		return null;
+	}
+
 
 }

@@ -46,6 +46,8 @@
         <mapping class="com.hiringbell.entity.KeySkill" />
         <mapping class="com.hiringbell.entity.OnlineProfile" />
         <mapping class="com.hiringbell.entity.WorkSample" />
+        <mapping class="com.hiringbell.entity.ResearchPublication" />
+        <mapping class="com.hiringbell.entity.Presentation" />
         
         
     </session-factory>

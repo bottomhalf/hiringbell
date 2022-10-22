@@ -36,8 +36,16 @@ public class CommonService {
 	OnlineProfileService onlineProfileService;
 	
 	@Autowired
-	CommonResultModal commonResultModal;
+	WorkSampleService workSampleService;
 	
+	@Autowired
+	ResearchPublicationService researchPublicationService;
+	
+	@Autowired
+	PresentationService presentationService;
+	
+	@Autowired
+	CommonResultModal commonResultModal;
 
 	public CommonResultModal getLoadAllDetailByUserIdService(long userId) throws JsonMappingException, JsonProcessingException {
 		CommonResultModal commonResultModal = new CommonResultModal();
@@ -48,7 +56,9 @@ public class CommonService {
 		commonResultModal.setProfileSummaryResult(this.profileSummaryService.getByUserIdProfileSummaryService(userId));
 		commonResultModal.setKeySkillResult(this.keySkillService.getByUserIdKeySkillService(userId));
 		commonResultModal.setOnlineProfileResult(this.onlineProfileService.getByUserIdOnlineProfileService(userId));
-		
+		commonResultModal.setWorkSampleResult(this.workSampleService.getByUserIdWorkSampleService(userId));
+		commonResultModal.setResearchPublicationResult(this.researchPublicationService.getResearchPublicationByUserIdService(userId));
+		commonResultModal.setPresentationResult(this.presentationService.getPresentationByUserIdService(userId));
 		
 		return commonResultModal;
 		

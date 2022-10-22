@@ -9,8 +9,11 @@ import com.hiringbell.entity.EmploymentDetail;
 import com.hiringbell.entity.ItSkills;
 import com.hiringbell.entity.KeySkill;
 import com.hiringbell.entity.OnlineProfile;
+import com.hiringbell.entity.Presentation;
 import com.hiringbell.entity.ProfileSummary;
 import com.hiringbell.entity.ProjectDetail;
+import com.hiringbell.entity.ResearchPublication;
+import com.hiringbell.entity.WorkSample;
 
 @Component
 public class CommonResultModal {
@@ -22,6 +25,9 @@ public class CommonResultModal {
 	ArrayList<ProfileSummary> profileSummaryResult;
 	KeySkill keySkillResult;
 	ArrayList<OnlineProfile> onlineProfileResult;
+	ArrayList<WorkSample> workSampleResult;
+	ArrayList<ResearchPublication> researchPublicationResult;
+	ArrayList<Presentation> presentationResult;
 	
 	public ArrayList<EducationalDetail> getEducationDetailResult() {
 		return educationDetailResult;
@@ -65,11 +71,30 @@ public class CommonResultModal {
 	public void setOnlineProfileResult(ArrayList<OnlineProfile> onlineProfileResult) {
 		this.onlineProfileResult = onlineProfileResult;
 	}
+	public ArrayList<WorkSample> getWorkSampleResult() {
+		return workSampleResult;
+	}
+	public void setWorkSampleResult(ArrayList<WorkSample> workSampleResult) {
+		this.workSampleResult = workSampleResult;
+	}
+	public ArrayList<ResearchPublication> getResearchPublicationResult() {
+		return researchPublicationResult;
+	}
+	public void setResearchPublicationResult(ArrayList<ResearchPublication> researchPublicationResult) {
+		this.researchPublicationResult = researchPublicationResult;
+	}
+	public ArrayList<Presentation> getPresentationResult() {
+		return presentationResult;
+	}
+	public void setPresentationResult(ArrayList<Presentation> presentationResult) {
+		this.presentationResult = presentationResult;
+	}
 	
 	public CommonResultModal(ArrayList<EducationalDetail> educationDetailResult,
 			ArrayList<EmploymentDetail> employmentDetailResult, ArrayList<ProjectDetail> projectDetailResult,
 			ArrayList<ItSkills> itSkillsResult, ArrayList<ProfileSummary> profileSummaryResult, KeySkill keySkillResult,
-			ArrayList<OnlineProfile> onlineProfileResult) {
+			ArrayList<OnlineProfile> onlineProfileResult, ArrayList<WorkSample> workSampleResult,
+			ArrayList<ResearchPublication> researchPublicationResult, ArrayList<Presentation> presentationResult) {
 		super();
 		this.educationDetailResult = educationDetailResult;
 		this.employmentDetailResult = employmentDetailResult;
@@ -78,12 +103,14 @@ public class CommonResultModal {
 		this.profileSummaryResult = profileSummaryResult;
 		this.keySkillResult = keySkillResult;
 		this.onlineProfileResult = onlineProfileResult;
+		this.workSampleResult = workSampleResult;
+		this.researchPublicationResult = researchPublicationResult;
+		this.presentationResult = presentationResult;
 	}
 	
 	public CommonResultModal() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 }

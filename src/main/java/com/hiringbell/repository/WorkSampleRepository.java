@@ -12,6 +12,7 @@ import org.hibernate.procedure.ProcedureCall;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.hiringbell.entity.ProjectDetail;
 import com.hiringbell.entity.WorkSample;
 import com.hiringbell.securityConfig.HibernateUtil;
 
@@ -134,6 +135,30 @@ public class WorkSampleRepository {
 			}
 		}
 		return (ArrayList<WorkSample>) result;
+	}
+
+	public String deleteByworkSampleIdWorkSampleRepo(long workSampleId) {
+		int result = 0;
+		Transaction tx = null;
+		SessionFactory factory = HibernateUtil.getSessionFactory();
+		System.out.println(factory);
+		try(Session session = factory.openSession()){
+			tx = session.beginTransaction();
+			Query<ProjectDetail> query = session.createSQLQuery("Call sp_WorkSample_DeleteByWorkSampleId(:workSampleId)").addEntity(WorkSample.class);
+			query.setParameter("workSampleId", workSampleId);
+			result = query.executeUpdate();
+			System.out.println("Row affected" + result);
+			tx.commit();
+			session.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			if(tx!=null)
+			{
+				tx.rollback();
+			}
+		}
+		return "Data deleted from Work Sample";
 	}
 	
 	
