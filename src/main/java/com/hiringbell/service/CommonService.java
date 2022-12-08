@@ -45,6 +45,9 @@ public class CommonService {
 	PresentationService presentationService;
 	
 	@Autowired
+	PatentService patentService;
+	
+	@Autowired
 	CommonResultModal commonResultModal;
 
 	public CommonResultModal getLoadAllDetailByUserIdService(long userId) throws JsonMappingException, JsonProcessingException {
@@ -59,6 +62,7 @@ public class CommonService {
 		commonResultModal.setWorkSampleResult(this.workSampleService.getByUserIdWorkSampleService(userId));
 		commonResultModal.setResearchPublicationResult(this.researchPublicationService.getResearchPublicationByUserIdService(userId));
 		commonResultModal.setPresentationResult(this.presentationService.getPresentationByUserIdService(userId));
+		commonResultModal.setPatentResult(this.patentService.getPatentByUserIdService(userId));
 		
 		return commonResultModal;
 		

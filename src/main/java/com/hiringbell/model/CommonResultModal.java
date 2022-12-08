@@ -9,6 +9,7 @@ import com.hiringbell.entity.EmploymentDetail;
 import com.hiringbell.entity.ItSkills;
 import com.hiringbell.entity.KeySkill;
 import com.hiringbell.entity.OnlineProfile;
+import com.hiringbell.entity.Patent;
 import com.hiringbell.entity.Presentation;
 import com.hiringbell.entity.ProfileSummary;
 import com.hiringbell.entity.ProjectDetail;
@@ -28,6 +29,8 @@ public class CommonResultModal {
 	ArrayList<WorkSample> workSampleResult;
 	ArrayList<ResearchPublication> researchPublicationResult;
 	ArrayList<Presentation> presentationResult;
+	ArrayList<Patent> patentResult;
+	
 	
 	public ArrayList<EducationalDetail> getEducationDetailResult() {
 		return educationDetailResult;
@@ -90,11 +93,19 @@ public class CommonResultModal {
 		this.presentationResult = presentationResult;
 	}
 	
+	public ArrayList<Patent> getPatentResult() {
+		return patentResult;
+	}
+	public void setPatentResult(ArrayList<Patent> patentResult) {
+		this.patentResult = patentResult;
+	}
+	
 	public CommonResultModal(ArrayList<EducationalDetail> educationDetailResult,
 			ArrayList<EmploymentDetail> employmentDetailResult, ArrayList<ProjectDetail> projectDetailResult,
 			ArrayList<ItSkills> itSkillsResult, ArrayList<ProfileSummary> profileSummaryResult, KeySkill keySkillResult,
 			ArrayList<OnlineProfile> onlineProfileResult, ArrayList<WorkSample> workSampleResult,
-			ArrayList<ResearchPublication> researchPublicationResult, ArrayList<Presentation> presentationResult) {
+			ArrayList<ResearchPublication> researchPublicationResult, ArrayList<Presentation> presentationResult,
+			ArrayList<Patent> patentResult) {
 		super();
 		this.educationDetailResult = educationDetailResult;
 		this.employmentDetailResult = employmentDetailResult;
@@ -106,6 +117,7 @@ public class CommonResultModal {
 		this.workSampleResult = workSampleResult;
 		this.researchPublicationResult = researchPublicationResult;
 		this.presentationResult = presentationResult;
+		this.patentResult = patentResult;
 	}
 	
 	public CommonResultModal() {
