@@ -1,5 +1,6 @@
 package com.hiringbell.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +8,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.hiringbell.entity.ProjectDetail;
+import com.hiringbell.interfaces.IProjectDetailService;
 import com.hiringbell.repository.ProjectDetailRepository;
 
 
 @Service
 @Component
-public class ProjectDetailService {
+public class ProjectDetailService implements IProjectDetailService {
 	
 	@Autowired
 	ProjectDetailRepository projectDetailRepository;
@@ -24,29 +26,13 @@ public class ProjectDetailService {
 
 	public String updateProjectDetailService(ProjectDetail projectDetail, long projectDetailId) throws Exception {
 		var result = "";
-		ProjectDetail value = this.projectDetailRepository.getByIdProjectDetailRepo(projectDetailId);
-		if(value!=null)
+		if(projectDetailId > 0)
 		{
-			value.setProjectTitle(projectDetail.getProjectTitle());
-			value.setProjectTitle(projectDetail.getProjectTitle());
-			value.setProjectTag(projectDetail.getProjectTag());
-			value.setProjectWorkingYear(projectDetail.getProjectWorkingYear());
-			value.setProjectWorkingMonth(projectDetail.getProjectWorkingMonth());
-			value.setProjectWorkedYear(projectDetail.getProjectWorkedYear());
-			value.setProjectWorkedMonth(projectDetail.getProjectWorkedMonth());
-			value.setProjectStatus(projectDetail.getProjectStatus());
-			value.setClientName(projectDetail.getClientName());
-			value.setProjectDetails(projectDetail.getProjectDetails());
-			value.setRolesResponsibility(projectDetail.getRolesResponsibility());
-			value.setTechnalogyStack(projectDetail.getTechnalogyStack());
-			value.setProjectDuration(projectDetail.getProjectDuration());
-			value.setProjectIndex(projectDetail.getProjectIndex());
-			value.setAdminId(projectDetail.getAdminId());
-			result = this.projectDetailRepository.updateProjectDetailRepo(value, projectDetailId);
+			result = this.projectDetailRepository.updateProjectDetailRepo(projectDetail, projectDetailId);
+			if (result == null || result == "")
+				throw new IOException("Unable to update");
 		}
-		else {
-			throw new Exception("Exception message");
-		}
+		
 		return result;
 	}
 	
@@ -55,8 +41,8 @@ public class ProjectDetailService {
 		return result;
 	}
 
-	public ProjectDetail getByIdProjectDetailService(long projectDetailId) {
-		var result = this.projectDetailRepository.getByIdProjectDetailRepo(projectDetailId);
+	public ArrayList<ProjectDetail> getByUserIdProjectDetailService(long userId) {
+		var result = this.projectDetailRepository.getByUserIdProjectDetailRepo(userId);
 		return result;
 	}
 	
@@ -66,6 +52,4 @@ public class ProjectDetailService {
 	}
 	
 	
-	
-
 }

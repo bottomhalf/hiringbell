@@ -98,8 +98,7 @@ public class CompanyRepository {
 		}
 		return "Data updated successfully in company";
 	}
-	
-	
+		
 	public ArrayList<Company> getAllCompanyRepo() {
 		java.util.List<Company> allCompany = null;
 		Transaction tx = null;
@@ -121,7 +120,6 @@ public class CompanyRepository {
 		}
 		return (ArrayList<Company>) allCompany ;
 	}
-	
 	
 	public Company getCompanyByIdRepo(long comapanyId) {
 		Company companyDetail = null;

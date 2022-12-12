@@ -29,13 +29,21 @@ public class EducationalDetailRepository {
 			tx = session.beginTransaction();
 			ProcedureCall query = session.createStoredProcedureCall("sp_EducationalDetail_InsUpdate");
 			query.registerParameter("_EducationalDetailId", Long.class, ParameterMode.IN).bindValue(educationalDetail.getEducationalDetailId());
-			query.registerParameter("_DegreeName", String.class, ParameterMode.IN).bindValue(educationalDetail.getDegreeName());
-			query.registerParameter("_PassoutYear", String.class, ParameterMode.IN).bindValue(educationalDetail.getPassoutYear());
-			query.registerParameter("_Specialization", String.class, ParameterMode.IN).bindValue(educationalDetail.getSpecialization());
-			query.registerParameter("_UniversityName", String.class, ParameterMode.IN).bindValue(educationalDetail.getUniversityName());
-			query.registerParameter("_CourseType", String.class, ParameterMode.IN).bindValue(educationalDetail.getCourseType());
+			query.registerParameter("_UserId", Long.class, ParameterMode.IN).bindValue(educationalDetail.getUserId());
+			query.registerParameter("_Education", int.class, ParameterMode.IN).bindValue(educationalDetail.getEducation());
+			query.registerParameter("_Board", int.class, ParameterMode.IN).bindValue(educationalDetail.getBoard());
+			query.registerParameter("_SchoolMedium", String.class, ParameterMode.IN).bindValue(educationalDetail.getSchoolMedium());
+			query.registerParameter("_TotalMarks", String.class, ParameterMode.IN).bindValue(educationalDetail.getTotalMarks());
+			query.registerParameter("_EnglishMarks", double.class, ParameterMode.IN).bindValue(educationalDetail.getEnglishMarks());
+			query.registerParameter("_MathsMarks", double.class, ParameterMode.IN).bindValue(educationalDetail.getMathsMarks());
+			query.registerParameter("_Course", int.class, ParameterMode.IN).bindValue(educationalDetail.getCourse());
+			query.registerParameter("_OtherCourse", String.class, ParameterMode.IN).bindValue(educationalDetail.getOtherCourse());
+			query.registerParameter("_Specialization", int.class, ParameterMode.IN).bindValue(educationalDetail.getSpecialization());
+			query.registerParameter("_OtherSpecialization", String.class, ParameterMode.IN).bindValue(educationalDetail.getOtherSpecialization());
+			query.registerParameter("_UniversityInstitute", String.class, ParameterMode.IN).bindValue(educationalDetail.getUniversityInstitute());
+			query.registerParameter("_CourseType", int.class, ParameterMode.IN).bindValue(educationalDetail.getCourseType());
+			query.registerParameter("_PassingOutYear", int.class, ParameterMode.IN).bindValue(educationalDetail.getPassingOutYear());
 			query.registerParameter("_GradingSystem", String.class, ParameterMode.IN).bindValue(educationalDetail.getGradingSystem());
-			query.registerParameter("_Course", String.class, ParameterMode.IN).bindValue(educationalDetail.getCourse());
 			query.registerParameter("_AdminId", Long.class, ParameterMode.IN).bindValue(educationalDetail.getCreatedBy());
 			query.registerParameter("_ProcessingResult", String.class, ParameterMode.OUT);
 			String result = query.getOutputParameterValue("_ProcessingResult").toString();
@@ -65,13 +73,21 @@ public class EducationalDetailRepository {
 			tx = session.beginTransaction();
 			ProcedureCall query = session.createStoredProcedureCall("sp_EducationalDetail_InsUpdate");
 			query.registerParameter("_EducationalDetailId", Long.class, ParameterMode.IN).bindValue(educationalDetail.getEducationalDetailId());
-			query.registerParameter("_DegreeName", String.class, ParameterMode.IN).bindValue(educationalDetail.getDegreeName());
-			query.registerParameter("_PassoutYear", String.class, ParameterMode.IN).bindValue(educationalDetail.getPassoutYear());
-			query.registerParameter("_Specialization", String.class, ParameterMode.IN).bindValue(educationalDetail.getSpecialization());
-			query.registerParameter("_UniversityName", String.class, ParameterMode.IN).bindValue(educationalDetail.getUniversityName());
-			query.registerParameter("_CourseType", String.class, ParameterMode.IN).bindValue(educationalDetail.getCourseType());
+			query.registerParameter("_UserId", Long.class, ParameterMode.IN).bindValue(educationalDetail.getUserId());
+			query.registerParameter("_Education", int.class, ParameterMode.IN).bindValue(educationalDetail.getEducation());
+			query.registerParameter("_Board", int.class, ParameterMode.IN).bindValue(educationalDetail.getBoard());
+			query.registerParameter("_SchoolMedium", String.class, ParameterMode.IN).bindValue(educationalDetail.getSchoolMedium());
+			query.registerParameter("_TotalMarks", String.class, ParameterMode.IN).bindValue(educationalDetail.getTotalMarks());
+			query.registerParameter("_EnglishMarks", double.class, ParameterMode.IN).bindValue(educationalDetail.getEnglishMarks());
+			query.registerParameter("_MathsMarks", double.class, ParameterMode.IN).bindValue(educationalDetail.getMathsMarks());
+			query.registerParameter("_Course", int.class, ParameterMode.IN).bindValue(educationalDetail.getCourse());
+			query.registerParameter("_OtherCourse", String.class, ParameterMode.IN).bindValue(educationalDetail.getOtherCourse());
+			query.registerParameter("_Specialization", int.class, ParameterMode.IN).bindValue(educationalDetail.getSpecialization());
+			query.registerParameter("_OtherSpecialization", String.class, ParameterMode.IN).bindValue(educationalDetail.getOtherSpecialization());
+			query.registerParameter("_UniversityInstitute", String.class, ParameterMode.IN).bindValue(educationalDetail.getUniversityInstitute());
+			query.registerParameter("_CourseType", int.class, ParameterMode.IN).bindValue(educationalDetail.getCourseType());
+			query.registerParameter("_PassingOutYear", int.class, ParameterMode.IN).bindValue(educationalDetail.getPassingOutYear());
 			query.registerParameter("_GradingSystem", String.class, ParameterMode.IN).bindValue(educationalDetail.getGradingSystem());
-			query.registerParameter("_Course", String.class, ParameterMode.IN).bindValue(educationalDetail.getCourse());
 			query.registerParameter("_AdminId", Long.class, ParameterMode.IN).bindValue(educationalDetail.getUpdatedBy());
 			query.registerParameter("_ProcessingResult", String.class, ParameterMode.OUT);
 			String result = query.getOutputParameterValue("_ProcessingResult").toString();
@@ -114,16 +130,17 @@ public class EducationalDetailRepository {
 		return (ArrayList<EducationalDetail>) result;
 	}
 	
-	public EducationalDetail getByIdEducationalDetailRepo(long educationalDetailId) {
-		EducationalDetail result = null;
+	public ArrayList<EducationalDetail> getByUserIdEducationalDetailRepo(long userId) {
+		java.util.List<EducationalDetail> result = null;
 		Transaction tx = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		System.out.println(factory);
 		try(Session session = factory.openSession()) {
 			tx = session.beginTransaction();
-			Query<EducationalDetail> query = session.createSQLQuery("Call sp_EducationalDetail_getByEducationalDetailId(:educationalDetailId)").addEntity(EducationalDetail.class);	
-			query.setParameter("educationalDetailId", educationalDetailId);
-			result = query.getSingleResult();
+			Query<EducationalDetail> query = session.createSQLQuery("Call sp_EducationalDetail_getByUserId(:userId)").addEntity(EducationalDetail.class);	
+			query.setParameter("userId", userId);
+			//result = query.getSingleResult();
+			result = query.list();
 			tx.commit();
 			session.close();
 		} catch (Exception e) {
@@ -133,7 +150,7 @@ public class EducationalDetailRepository {
 				tx.rollback();
 			}
 		}
-		return result;
+		return (ArrayList<EducationalDetail>) result;
 	}
 
 	public String deleteByIdEducationalDetailRepo(long educationalDetailId) {

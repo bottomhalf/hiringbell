@@ -1,5 +1,6 @@
 package com.hiringbell.repository;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.persistence.ParameterMode;
@@ -28,15 +29,19 @@ public class EmploymentDetailRepository {
 			tx = session.beginTransaction();
 			ProcedureCall query = session.createStoredProcedureCall("sp_EmploymentDetail_InsUpdate");
 			query.registerParameter("_EmploymentDetailId", Long.class, ParameterMode.IN).bindValue(employmentDetail.getEmploymentDetailId());
-			query.registerParameter("_Organization", String.class, ParameterMode.IN).bindValue(employmentDetail.getOrganization());
+			query.registerParameter("_UserId", Long.class, ParameterMode.IN).bindValue(employmentDetail.getUserId());
 			query.registerParameter("_Designation", String.class, ParameterMode.IN).bindValue(employmentDetail.getDesignation());
-			query.registerParameter("_EmploymentStatus", String.class, ParameterMode.IN).bindValue(employmentDetail.getEmploymentStatus());
-			query.registerParameter("_Years", int.class, ParameterMode.IN).bindValue(employmentDetail.getYears());
-			query.registerParameter("_Months", int.class, ParameterMode.IN).bindValue(employmentDetail.getMonths());
-			query.registerParameter("_CurrentSalary", Double.class, ParameterMode.IN).bindValue(employmentDetail.getCurrentSalary());
-			query.registerParameter("_CurrencyType", String.class, ParameterMode.IN).bindValue(employmentDetail.getCurrencyType());
-			query.registerParameter("_Experties", String.class, ParameterMode.IN).bindValue(employmentDetail.getExperties());
+			query.registerParameter("_CompanyName", String.class, ParameterMode.IN).bindValue(employmentDetail.getCompanyName());
+			query.registerParameter("_IsCurrentCompany", boolean.class , ParameterMode.IN).bindValue(employmentDetail.getIsCurrentCompany());
+			query.registerParameter("_JoiningDate", Date.class, ParameterMode.IN).bindValue(employmentDetail.getJoiningDate());
+			query.registerParameter("_WorkedTill", Date.class, ParameterMode.IN).bindValue(employmentDetail.getWorkedTill());
+			query.registerParameter("_CurrencyType", boolean.class, ParameterMode.IN).bindValue(employmentDetail.getCurrencyType());
+			query.registerParameter("_currentAnnualSalary", double.class, ParameterMode.IN).bindValue(employmentDetail.getCurrentAnnualSalary());
+			query.registerParameter("_SkillsUsed", String.class, ParameterMode.IN).bindValue(employmentDetail.getSkillsUsed());
 			query.registerParameter("_JobProfile", String.class, ParameterMode.IN).bindValue(employmentDetail.getJobProfile());
+			query.registerParameter("_NoticePeriod", int.class, ParameterMode.IN).bindValue(employmentDetail.getNoticePeriod());
+			query.registerParameter("_IsServingNoticePeriod", boolean.class, ParameterMode.IN).bindValue(employmentDetail.getIsServingNoticePeriod());
+			query.registerParameter("_RemainingDaysOfNoticePeriod", int.class, ParameterMode.IN).bindValue(employmentDetail.getRemainingDaysOfNoticePeriod());
 			query.registerParameter("_AdminId", Long.class, ParameterMode.IN).bindValue(employmentDetail.getCreatedBy());
 			query.registerParameter("_ProcessingResult", String.class, ParameterMode.OUT);
 			String result = query.getOutputParameterValue("_ProcessingResult").toString();
@@ -64,15 +69,19 @@ public class EmploymentDetailRepository {
 			tx = session.beginTransaction();
 			ProcedureCall query = session.createStoredProcedureCall("sp_EmploymentDetail_InsUpdate");
 			query.registerParameter("_EmploymentDetailId", Long.class, ParameterMode.IN).bindValue(employmentDetail.getEmploymentDetailId());
-			query.registerParameter("_Organization", String.class, ParameterMode.IN).bindValue(employmentDetail.getOrganization());
+			query.registerParameter("_UserId", Long.class, ParameterMode.IN).bindValue(employmentDetail.getUserId());
 			query.registerParameter("_Designation", String.class, ParameterMode.IN).bindValue(employmentDetail.getDesignation());
-			query.registerParameter("_EmploymentStatus", String.class, ParameterMode.IN).bindValue(employmentDetail.getEmploymentStatus());
-			query.registerParameter("_Years", int.class, ParameterMode.IN).bindValue(employmentDetail.getYears());
-			query.registerParameter("_Months", int.class, ParameterMode.IN).bindValue(employmentDetail.getMonths());
-			query.registerParameter("_CurrentSalary", Double.class, ParameterMode.IN).bindValue(employmentDetail.getCurrentSalary());
-			query.registerParameter("_CurrencyType", String.class, ParameterMode.IN).bindValue(employmentDetail.getCurrencyType());
-			query.registerParameter("_Experties", String.class, ParameterMode.IN).bindValue(employmentDetail.getExperties());
+			query.registerParameter("_CompanyName", String.class, ParameterMode.IN).bindValue(employmentDetail.getCompanyName());
+			query.registerParameter("_IsCurrentCompany", boolean.class , ParameterMode.IN).bindValue(employmentDetail.getIsCurrentCompany());
+			query.registerParameter("_JoiningDate", Date.class, ParameterMode.IN).bindValue(employmentDetail.getJoiningDate());
+			query.registerParameter("_WorkedTill", Date.class, ParameterMode.IN).bindValue(employmentDetail.getWorkedTill());
+			query.registerParameter("_CurrencyType", boolean.class, ParameterMode.IN).bindValue(employmentDetail.getCurrencyType());
+			query.registerParameter("_currentAnnualSalary", double.class, ParameterMode.IN).bindValue(employmentDetail.getCurrentAnnualSalary());
+			query.registerParameter("_SkillsUsed", String.class, ParameterMode.IN).bindValue(employmentDetail.getSkillsUsed());
 			query.registerParameter("_JobProfile", String.class, ParameterMode.IN).bindValue(employmentDetail.getJobProfile());
+			query.registerParameter("_NoticePeriod", int.class, ParameterMode.IN).bindValue(employmentDetail.getNoticePeriod());
+			query.registerParameter("_IsServingNoticePeriod", boolean.class, ParameterMode.IN).bindValue(employmentDetail.getIsServingNoticePeriod());
+			query.registerParameter("_RemainingDaysOfNoticePeriod", int.class, ParameterMode.IN).bindValue(employmentDetail.getRemainingDaysOfNoticePeriod());
 			query.registerParameter("_AdminId", Long.class, ParameterMode.IN).bindValue(employmentDetail.getUpdatedBy());
 			query.registerParameter("_ProcessingResult", String.class, ParameterMode.OUT);
 			String result = query.getOutputParameterValue("_ProcessingResult").toString();
@@ -113,16 +122,17 @@ public class EmploymentDetailRepository {
 		return (ArrayList<EmploymentDetail>)result;
 	}
 	
-	public EmploymentDetail getByIdEmploymentDetailRepo(long employmentDetailId) {
-		EmploymentDetail result = null;
+	public ArrayList<EmploymentDetail> getByUserIdEmploymentDetailRepo(long userId) {
+		java.util.List<EmploymentDetail> result = null;
 		Transaction tx = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		System.out.println(factory);
 		try(Session session = factory.openSession()) {
 			tx = session.beginTransaction();
-			Query<EmploymentDetail> query = session.createSQLQuery("Call sp_EmploymentDetail_getByEmploymentDetailId(:employmentDetailId)").addEntity(EmploymentDetail.class);	
-			query.setParameter("employmentDetailId", employmentDetailId);
-			result = query.getSingleResult();
+			Query<EmploymentDetail> query = session.createSQLQuery("Call sp_EmploymentDetail_getByUserId(:userId)").addEntity(EmploymentDetail.class);	
+			query.setParameter("userId", userId);
+			//result = query.getSingleResult();
+			result = query.list();
 			tx.commit();
 			session.close();
 		} catch (Exception e) {
@@ -132,7 +142,7 @@ public class EmploymentDetailRepository {
 				tx.rollback();
 			}
 		}
-		return result;
+		return (ArrayList<EmploymentDetail>)result;
 	}
 
 	

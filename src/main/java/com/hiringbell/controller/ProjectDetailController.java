@@ -41,9 +41,9 @@ public class ProjectDetailController extends BaseController {
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/getById/{projectDetailId}")
-	public ResponseModal getByIdProjectDetail(@PathVariable("projectDetailId") long projectDetailId){
-		var result = this.projectDetailService.getByIdProjectDetailService(projectDetailId);
+	@GetMapping("/getByUserId/{userId}")
+	public ResponseModal getByUserIdProjectDetail(@PathVariable("userId") long userId){
+		var result = this.projectDetailService.getByUserIdProjectDetailService(userId);
 		return BuildOk(result);
 	}
 	

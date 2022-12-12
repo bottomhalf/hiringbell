@@ -28,19 +28,22 @@ public class ProjectDetailRepository {
 			tx = session.beginTransaction();
 			ProcedureCall query = session.createStoredProcedureCall("sp_ProjectDetail_InsUpdate");
 			query.registerParameter("_ProjectDetailId", Long.class, ParameterMode.IN).bindValue(projectDetail.getProjectDetailId());
+			query.registerParameter("_userId", Long.class, ParameterMode.IN).bindValue(projectDetail.getUserId());
 			query.registerParameter("_ProjectTitle", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectTitle());
-			query.registerParameter("_ProjectTag", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectTag());
-			query.registerParameter("_ProjectWorkingYear", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectWorkingYear());
-			query.registerParameter("_ProjectWorkingMonth", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectWorkingMonth());
-			query.registerParameter("_ProjectWorkedYear", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectWorkedYear());
-			query.registerParameter("_ProjectWorkedMonth", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectWorkedMonth());
-			query.registerParameter("_ProjectStatus", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectStatus());
-			query.registerParameter("_ClientName", String.class, ParameterMode.IN).bindValue(projectDetail.getClientName());
-			query.registerParameter("_ProjectDetails", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectDetails());
-			query.registerParameter("_RolesResponsibility", String.class, ParameterMode.IN).bindValue(projectDetail.getRolesResponsibility());
-			query.registerParameter("_TechnalogyStack", String.class, ParameterMode.IN).bindValue(projectDetail.getTechnalogyStack());
-			query.registerParameter("_ProjectDuration", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectDuration());
-			query.registerParameter("_ProjectIndex", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectIndex());
+			query.registerParameter("_Client", String.class, ParameterMode.IN).bindValue(projectDetail.getClient());
+			query.registerParameter("_ProjectStatus", Boolean.class, ParameterMode.IN).bindValue(projectDetail.getProjectStatus());
+			query.registerParameter("_WorkedFromYears", int.class, ParameterMode.IN).bindValue(projectDetail.getWorkedFromYears());
+			query.registerParameter("_WorkedFromMonth", String.class, ParameterMode.IN).bindValue(projectDetail.getWorkedFromMonth());
+			query.registerParameter("_WorkedTillYears", int.class, ParameterMode.IN).bindValue(projectDetail.getWorkedFromYears());
+			query.registerParameter("_WorkedTillMonth", String.class, ParameterMode.IN).bindValue(projectDetail.getWorkedTillMonth());
+			query.registerParameter("_DetailsOfProject", String.class, ParameterMode.IN).bindValue(projectDetail.getDetailsOfProject());
+			query.registerParameter("_ProjectLocation", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectLocation());
+			query.registerParameter("_ProjectSite", Boolean.class, ParameterMode.IN).bindValue(projectDetail.getProjectSite());
+			query.registerParameter("_NatureOfEmployment", String.class, ParameterMode.IN).bindValue(projectDetail.getNatureOfEmployment());
+			query.registerParameter("_TeamSize", int.class, ParameterMode.IN).bindValue(projectDetail.getTeamSize());
+			query.registerParameter("_Role", String.class, ParameterMode.IN).bindValue(projectDetail.getRole());
+			query.registerParameter("_RoleDescription", String.class, ParameterMode.IN).bindValue(projectDetail.getRoleDescription());
+			query.registerParameter("_SkillsUsed", String.class, ParameterMode.IN).bindValue(projectDetail.getSkillsUsed());
 			query.registerParameter("_AdminId", Long.class, ParameterMode.IN).bindValue(projectDetail.getCreatedBy());
 			query.registerParameter("_ProcessingResult", String.class, ParameterMode.OUT);
 			String result = query.getOutputParameterValue("_ProcessingResult").toString();
@@ -49,7 +52,6 @@ public class ProjectDetailRepository {
 			tx.commit();
 			session.close();
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println(e.getMessage());
 			if(tx!=null)
 			{
@@ -69,19 +71,22 @@ public class ProjectDetailRepository {
 			tx = session.beginTransaction();
 			ProcedureCall query = session.createStoredProcedureCall("sp_ProjectDetail_InsUpdate");
 			query.registerParameter("_ProjectDetailId", Long.class, ParameterMode.IN).bindValue(projectDetail.getProjectDetailId());
+			query.registerParameter("_userId", Long.class, ParameterMode.IN).bindValue(projectDetail.getUserId());
 			query.registerParameter("_ProjectTitle", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectTitle());
-			query.registerParameter("_ProjectTag", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectTag());
-			query.registerParameter("_ProjectWorkingYear", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectWorkingYear());
-			query.registerParameter("_ProjectWorkingMonth", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectWorkingMonth());
-			query.registerParameter("_ProjectWorkedYear", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectWorkedYear());
-			query.registerParameter("_ProjectWorkedMonth", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectWorkedMonth());
-			query.registerParameter("_ProjectStatus", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectStatus());
-			query.registerParameter("_ClientName", String.class, ParameterMode.IN).bindValue(projectDetail.getClientName());
-			query.registerParameter("_ProjectDetails", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectDetails());
-			query.registerParameter("_RolesResponsibility", String.class, ParameterMode.IN).bindValue(projectDetail.getRolesResponsibility());
-			query.registerParameter("_TechnalogyStack", String.class, ParameterMode.IN).bindValue(projectDetail.getTechnalogyStack());
-			query.registerParameter("_ProjectDuration", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectDuration());
-			query.registerParameter("_ProjectIndex", int.class, ParameterMode.IN).bindValue(projectDetail.getProjectIndex());
+			query.registerParameter("_Client", String.class, ParameterMode.IN).bindValue(projectDetail.getClient());
+			query.registerParameter("_ProjectStatus", Boolean.class, ParameterMode.IN).bindValue(projectDetail.getProjectStatus());
+			query.registerParameter("_WorkedFromYears", int.class, ParameterMode.IN).bindValue(projectDetail.getWorkedFromYears());
+			query.registerParameter("_WorkedFromMonth", String.class, ParameterMode.IN).bindValue(projectDetail.getWorkedFromMonth());
+			query.registerParameter("_WorkedTillYears", int.class, ParameterMode.IN).bindValue(projectDetail.getWorkedFromYears());
+			query.registerParameter("_WorkedTillMonth", String.class, ParameterMode.IN).bindValue(projectDetail.getWorkedTillMonth());
+			query.registerParameter("_DetailsOfProject", String.class, ParameterMode.IN).bindValue(projectDetail.getDetailsOfProject());
+			query.registerParameter("_ProjectLocation", String.class, ParameterMode.IN).bindValue(projectDetail.getProjectLocation());
+			query.registerParameter("_ProjectSite", Boolean.class, ParameterMode.IN).bindValue(projectDetail.getProjectSite());
+			query.registerParameter("_NatureOfEmployment", String.class, ParameterMode.IN).bindValue(projectDetail.getNatureOfEmployment());
+			query.registerParameter("_TeamSize", int.class, ParameterMode.IN).bindValue(projectDetail.getTeamSize());
+			query.registerParameter("_Role", String.class, ParameterMode.IN).bindValue(projectDetail.getRole());
+			query.registerParameter("_RoleDescription", String.class, ParameterMode.IN).bindValue(projectDetail.getRoleDescription());
+			query.registerParameter("_SkillsUsed", String.class, ParameterMode.IN).bindValue(projectDetail.getSkillsUsed());
 			query.registerParameter("_AdminId", Long.class, ParameterMode.IN).bindValue(projectDetail.getUpdatedBy());
 			query.registerParameter("_ProcessingResult", String.class, ParameterMode.OUT);
 			String result = query.getOutputParameterValue("_ProcessingResult").toString();
@@ -123,16 +128,17 @@ public class ProjectDetailRepository {
 		return (ArrayList<ProjectDetail>) result;
 	}
 	
-	public ProjectDetail getByIdProjectDetailRepo(long projectDetailId) {
-		ProjectDetail result = null;
+	public ArrayList<ProjectDetail> getByUserIdProjectDetailRepo(long userId) {
+		java.util.List<ProjectDetail> result = null;
 		Transaction tx = null;
 		SessionFactory factory = HibernateUtil.getSessionFactory();
 		System.out.println(factory);
 		try(Session session = factory.openSession()) {
 			tx = session.beginTransaction();
-			Query<ProjectDetail> query = session.createSQLQuery("Call sp_ProjectDetail_getByProjectDetailId(:projectDetailId)").addEntity(ProjectDetail.class);	
-			query.setParameter("projectDetailId", projectDetailId);
-			result = query.getSingleResult();
+			Query<ProjectDetail> query = session.createSQLQuery("Call sp_ProjectDetail_getByUserId(:userId)").addEntity(ProjectDetail.class);	
+			query.setParameter("userId", userId);
+			//result = query.getSingleResult();
+			result = query.list();
 			tx.commit();
 			session.close();
 		} catch (Exception e) {
@@ -142,7 +148,7 @@ public class ProjectDetailRepository {
 				tx.rollback();
 			}
 		}
-		return result;
+		return (ArrayList<ProjectDetail>) result;
 	}
 	
 	public String deleteByIdProjectDetailRepo(long projectDetailId) {

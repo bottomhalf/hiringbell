@@ -39,9 +39,9 @@ public class EmploymentDetailController extends BaseController {
 		return BuildOk(result);
 	}
 	
-	@GetMapping("/getByEmploymentDetailId/{employmentDetailId}")
-	public ResponseModal getByIdEmploymentDetail(@PathVariable ("employmentDetailId") long employmentDetailId) {
-		var result = this.employmentDetailService.getByIdEmploymentDetailService(employmentDetailId);
+	@GetMapping("/getByUserId/{userId}")
+	public ResponseModal getByUserIdEmploymentDetail(@PathVariable ("userId") long userId) {
+		var result = this.employmentDetailService.getByUserIdEmploymentDetailService(userId);
 		return BuildOk(result);
 	}
 	
